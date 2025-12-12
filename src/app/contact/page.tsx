@@ -24,7 +24,7 @@ const Contact = () => {
   }, []);
 
   // Gestionnaire pour les changements de formulaire
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: { target: { name: string; value: string; }; }) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
       ...prevState,
