@@ -33,7 +33,7 @@ const Contact = () => {
   };
 
   // Gestionnaire pour la soumission du formulaire
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     // Traiter la soumission du formulaire ici
     console.log('Form data:', formData);
