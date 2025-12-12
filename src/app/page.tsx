@@ -1,65 +1,665 @@
-import Image from "next/image";
+"use client"
+
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [activeSlide, setActiveSlide] = useState(1);
+  const slideCount = 3;
+
+  // Gestionnaire pour le carousel
+  const nextSlide = () => {
+    setActiveSlide(activeSlide < slideCount ? activeSlide + 1 : 1);
+  };
+
+  const prevSlide = () => {
+    setActiveSlide(activeSlide > 1 ? activeSlide - 1 : slideCount);
+  };
+
+  // Fermer le menu mobile quand on clique sur un lien
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setMobileNavOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Composant Accordion pour la FAQ
+  // const Accordion = ({ title, children }) => {
+  //   const [isOpen, setIsOpen] = useState(false);
+    
+  //   return (
+  //     <button 
+  //       onClick={() => setIsOpen(!isOpen)}
+  //       className="flex w-full py-6 px-8 mb-4 items-start justify-between text-left shadow-md rounded-2xl"
+  //     >
+  //       <div>
+  //         <div className="pr-5">
+  //           <h5 className="text-lg font-medium">{title}</h5>
+  //         </div>
+  //         <div 
+  //           className={`overflow-hidden pr-5 duration-500 ${isOpen ? 'h-auto mt-4' : 'h-0'}`}
+  //         >
+  //           <p className="text-gray-700">{children}</p>
+  //         </div>
+  //       </div>
+  //       <span className="shrink-0">
+  //         {!isOpen ? (
+  //           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="">
+  //             <path d="M12 5.69995V18.3" stroke="#1D1F1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  //             <path d="M5.69995 12H18.3" stroke="#1D1F1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  //           </svg>
+  //         ) : (
+  //           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="">
+  //             <path d="M5.69995 12H18.3" stroke="#1D1F1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  //           </svg>
+  //         )}
+  //       </span>
+  //     </button>
+  //   );
+  // };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="antialiased bg-body text-body font-body">
+      {/* Banner */}
+      {/* <div>
+        <p className="mb-0 py-3 bg-lime-500 text-center">
+          Jeu 04 decembre 2025, 08H00
+        </p>
+      </div> */}
+
+      {/* Header */}
+      <section className="relative bg-teal-900">
+        <img className="absolute top-0 left-0 right-0 bottom-0 object-cover w-full h-full" src="/fauna-assets/headers/bg2.jpg" alt="" />
+        <nav className="py-6">
+          <div className="container mx-auto px-4">
+            <div className="relative flex items-center justify-between">
+              <Link href="/" className="inline-block">
+                <Image src="/logo.png" width={120} height={80} alt="Logo" />
+              </Link>
+              
+              <ul className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden md:flex">
+                <li className="mr-8">
+                  <Link className="inline-block text-white hover:text-lime-500 font-medium" href="/">Accueil</Link>
+                </li>
+                <li className="mr-8">
+                  <a className="inline-block text-white hover:text-lime-500 font-medium" href="">A propos</a>
+                </li>
+                {/* <li className="mr-8">
+                  <a className="inline-block text-white hover:text-lime-500 font-medium" href="pricing.html">Prix</a>
+                </li> */}
+                <li className="mr-8">
+                  <a className="inline-block text-white hover:text-lime-500 font-medium" href="">Nous contacter</a>
+                </li>
+                {/* <li>
+                  <a className="inline-block text-white hover:text-lime-500 font-medium" href="blog.html">Blog</a>
+                </li> */}
+              </ul>
+
+              <div className="flex items-center justify-end">
+                <div className="hidden md:block">
+                  <a href="contact.html" className="inline-flex group py-2.5 px-4 items-center justify-center text-sm font-medium text-white hover:text-teal-900 border border-white hover:bg-white rounded-full transition duration-200">
+                    <span className="mr-2">Souscrire</span>
+                    <span className="transform group-hover:translate-x-0.5 transition-transform duration-200">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="">
+                        <path d="M4.75 10H15.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M10 4.75L15.25 10L10 15.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </span>
+                  </a>
+                </div>
+                
+                <button 
+                  onClick={() => setMobileNavOpen(!mobileNavOpen)}
+                  className="md:hidden text-white hover:text-lime-500"
+                >
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="">
+                    <path d="M5.19995 23.2H26.7999" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M5.19995 16H26.7999" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M5.19995 8.79999H26.7999" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <div className="relative pt-18 pb-24 sm:pb-32 lg:pt-36 lg:pb-62">
+          <div className="container mx-auto px-4 relative">
+            <div className="max-w-lg xl:max-w-xl mx-auto text-center">
+              <h1 className="font-heading text-5xl xs:text-7xl xl:text-8xl tracking-tight text-white mb-8">
+                Votre réseau en un scan
+              </h1>
+              <p className="max-w-md xl:max-w-none text-lg text-white opacity-80 mb-10">
+                Partagez vos informations professionnelles instantanément avec un simple code QR. Moderne, écologique et toujours à jour. 
+              </p>
+              {/* <a href="#!" className="inline-flex py-4 px-6 items-center justify-center text-lg font-medium text-teal-900 border border-lime-500 hover:border-white bg-lime-500 hover:bg-white rounded-full transition duration-200">
+                See our solutions
+              </a> */}
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Mobile Navigation */}
+        <div className={`${mobileNavOpen ? 'block' : 'hidden'} fixed top-0 left-0 bottom-0 w-full xs:w-5/6 xs:max-w-md z-50`}>
+          <div 
+            onClick={() => setMobileNavOpen(false)}
+            className="fixed inset-0 bg-violet-900 opacity-20"
+          ></div>
+          <nav className="relative flex flex-col py-7 px-10 w-full h-full bg-white overflow-y-auto">
+            <div className="flex items-center justify-between">
+              <a href="#!" className="inline-block">
+                <Image className="h-8" src="/logo2.png" width={120} height={80} alt="Logo" />
+              </a>
+              <div className="flex items-center">
+                <a href="#!" className="inline-flex py-2.5 px-4 mr-6 items-center justify-center text-sm font-medium text-teal-900 hover:text-white border border-teal-900 hover:bg-teal-900 rounded-full transition duration-200">
+                  Souscrire
+                </a>
+                <button onClick={() => setMobileNavOpen(false)}>
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="">
+                    <path d="M23.2 8.79999L8.80005 23.2M8.80005 8.79999L23.2 23.2" stroke="#1D1F1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div className="pt-20 pb-12 mb-auto">
+              <ul className="flex-col">
+                <li className="mb-6">
+                  <a className="inline-block text-teal-900 hover:text-teal-700 font-medium" href="">A propos de nous</a>
+                </li>
+                {/* <li className="mb-6">
+                  <a className="inline-block text-teal-900 hover:text-teal-700 font-medium" href="pricing.html">Pricing</a>
+                </li> */}
+                <li className="mb-6">
+                  <a className="inline-block text-teal-900 hover:text-teal-700 font-medium" href="">Nous contacter</a>
+                </li>
+                {/* <li>
+                  <a className="inline-block text-teal-900 hover:text-teal-700 font-medium" href="blog.html">Blog</a>
+                </li> */}
+              </ul>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <a href="#!" className="inline-flex items-center text-lg font-medium text-teal-900">
+                <span>
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="">
+                    <path d="M6.4 6.39999H25.6C26.92 6.39999 28 7.47999 28 8.79999V23.2C28 24.52 26.92 25.6 25.6 25.6H6.4C5.08 25.6 4 24.52 4 23.2V8.79999C4 7.47999 5.08 6.39999 6.4 6.39999Z" stroke="#646A69" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M28 8.8L16 17.2L4 8.8" stroke="#646A69" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </span>
+                <span className="ml-2">Newsletter</span>
+              </a>
+              <div className="flex items-center">
+                <a href="#!" className="inline-block mr-4">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="">
+                    <g clipPath="url(#clip0_282_7847)">
+                      <path d="M11.548 19.9999V10.8776H14.6087L15.0679 7.32146H11.548V5.05136C11.548 4.02209 11.8326 3.32066 13.3103 3.32066L15.1918 3.31988V0.139123C14.8664 0.0968385 13.7495 -0.000106812 12.4495 -0.000106812C9.73488 -0.000106812 7.87642 1.65686 7.87642 4.69916V7.32146H4.8064V10.8776H7.87642V19.9999H11.548Z" fill="#022C22"/>
+                    </g>
+                  </svg>
+                </a>
+                <a href="#!" className="inline-block mr-4">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="">
+                    <path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2C22 17.7383 21.3889 19.2135 20.3012 20.3012C19.2135 21.3889 17.7383 22 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8C2 6.26174 2.61107 4.78649 3.69878 3.69878C4.78649 2.61107 6.26174 2 7.8 2ZM7.6 4C6.64522 4 5.72955 4.37928 5.05442 5.05442C4.37928 5.72955 4 6.64522 4 7.6V16.4C4 18.39 5.61 20 7.6 20H16.4C17.3548 20 18.2705 19.6207 18.9456 18.9456C19.6207 18.2705 20 17.3548 20 16.4V7.6C20 5.61 18.39 4 16.4 4H7.6ZM17.25 5.5C17.5815 5.5 17.8995 5.6317 18.1339 5.86612C18.3683 6.10054 18.5 6.41848 18.5 6.75C18.5 7.08152 18.3683 7.39946 18.1339 7.63388C17.8995 7.8683 17.5815 8 17.25 8C16.9185 8 16.6005 7.8683 16.3661 7.63388C16.1317 7.39946 16 7.08152 16 6.75C16 6.41848 16.1317 6.10054 16.3661 5.86612C16.6005 5.6317 16.9185 5.5 17.25 5.5ZM12 7C13.3261 7 14.5979 7.52678 15.5355 8.46447C16.4732 9.40215 17 10.6739 17 12C17 13.3261 16.4732 14.5979 15.5355 15.5355C14.5979 16.4732 13.3261 17 12 17C10.6739 17 9.40215 16.4732 8.46447 15.5355C7.52678 14.5979 7 13.3261 7 12C7 10.6739 7.52678 9.40215 8.46447 8.46447C9.40215 7.52678 10.6739 7 12 7ZM12 9C11.2044 9 10.4413 9.31607 9.87868 9.87868C9.31607 10.4413 9 11.2044 9 12C9 12.7956 9.31607 13.5587 9.87868 14.1213C10.4413 14.6839 11.2044 15 12 15C12.7956 15 13.5587 14.6839 14.1213 14.1213C14.6839 13.5587 15 12.7956 15 12C15 11.2044 14.6839 10.4413 14.1213 9.87868C13.5587 9.31607 12.7956 9 12 9Z" fill="currentColor"/>
+                  </svg>
+                </a>
+                <a href="#!" className="inline-block">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="">
+                    <path d="M19 3C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19ZM18.5 18.5V13.2C18.5 12.3354 18.1565 11.5062 17.5452 10.8948C16.9338 10.2835 16.1046 9.94 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17C14.6813 12.17 15.0374 12.3175 15.2999 12.5801C15.5625 12.8426 15.71 13.1987 15.71 13.57V18.5H18.5ZM6.88 8.56C7.32556 8.56 7.75288 8.383 8.06794 8.06794C8.383 7.75288 8.56 7.32556 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19C6.43178 5.19 6.00193 5.36805 5.68499 5.68499C5.36805 6.00193 5.19 6.43178 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56ZM8.27 18.5V10.13H5.5V18.5H8.27Z" fill="currentColor"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </nav>
         </div>
-      </main>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-12 lg:py-24">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap -mx-4">
+            <div className="w-full sm:w-1/2 md:w-1/4 px-4 mb-10 md:mb-0">
+              <div className="text-center">
+                <h5 className="text-2xl xs:text-3xl lg:text-4xl xl:text-5xl mb-4">500+</h5>
+                <span className="text-base lg:text-lg text-gray-700">Utilisateurs</span>
+              </div>
+            </div>
+            <div className="w-full sm:w-1/2 md:w-1/4 px-4 mb-10 sm:mb-0">
+              <div className="text-center">
+                <h5 className="text-2xl xs:text-3xl lg:text-4xl xl:text-5xl mb-4">800+</h5>
+                <span className="text-base lg:text-lg text-gray-700">Cartes business partagées</span>
+              </div>
+            </div>
+            <div className="w-full sm:w-1/2 md:w-1/4 px-4 mb-10 md:mb-0">
+              <div className="text-center">
+                <h5 className="text-2xl xs:text-3xl lg:text-4xl xl:text-5xl mb-4">1,500+</h5>
+                <span className="text-base lg:text-lg text-gray-700">Clients heureux</span>
+              </div>
+            </div>
+            <div className="w-full sm:w-1/2 md:w-1/4 px-4">
+              <div className="text-center">
+                <h5 className="text-2xl xs:text-3xl lg:text-4xl xl:text-5xl mb-4">15%</h5>
+                <span className="text-base lg:text-lg text-gray-700">Reduction Carbone</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Solutions Section */}
+      <section className="p-4 bg-white">
+        {/* <div className="pt-16 pb-24 px-5 xs:px-8 xl:px-12 bg-blue-950 rounded-3xl" style={{backgroundImage: "url(/fauna-assets/headers/bg3.jpg)", backgroundSize: "cover"}}> */}
+        <div className="pt-16 pb-24 px-5 xs:px-8 xl:px-12 bg-blue-950 rounded-3xl">
+          <div className="container mx-auto px-4">
+            <div className="flex mb-4 items-center">
+              <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="">
+                <circle cx="4" cy="4" r="4" fill="#022C22"/>
+              </svg>
+              <span className="inline-block ml-2 text-sm font-medium text-white">Une carte de visite digitale qui vous donne un avantage professionnel décisif</span>
+            </div>
+            <img src="/phone_qr.png" className='w-full' alt="qr code" style={{borderRadius: '20px'}} />
+            <div className="border-t border-teal-900 border-opacity-25 pt-14">
+              <h1 className="font-heading text-4xl sm:text-6xl mb-24 text-white">Pourquoi s&apos;en procurer ?</h1>
+              
+              <div className="flex flex-wrap -mx-4">
+                {/* EV Charging */}
+                <div className="w-full sm:w-1/2 px-4 mb-16">
+                  <div>
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="">
+                      <path d="M0 8C0 3.58172 3.58172 0 8 0H40C44.4183 0 48 3.58172 48 8V40C48 44.4183 44.4183 48 40 48H8C3.58172 48 0 44.4183 0 40V8Z" fill="white"/>
+                      <circle cx="16" cy="16" r="4" fill="#022C22"/>
+                      <circle cx="24" cy="32" r="4" fill="#022C22"/>
+                      <circle cx="32" cy="16" r="4" fill="#022C22"/>
+                    </svg>
+                    <div className="mt-6">
+                      <h5 className="text-2xl font-medium mb-3 text-white">Partage instantané</h5>
+                      <p className="mb-6 text-white">Un simple scan et toutes vos informations sont partagées en une seconde. Plus besoin de chercher vos cartes papier.</p>
+                      {/* <a href="#!" className="inline-block text-lg font-medium hover:text-teal-700 text-white">Read more</a> */}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Solar Energy */}
+                <div className="w-full sm:w-1/2 px-4 mb-16">
+                  <div>
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="">
+                      <path d="M0 8C0 3.58172 3.58172 0 8 0H40C44.4183 0 48 3.58172 48 8V40C48 44.4183 44.4183 48 40 48H8C3.58172 48 0 44.4183 0 40V8Z" fill="white"/>
+                      <rect x="23" y="8" width="2" height="12" rx="1" fill="#022C22"/>
+                      <rect x="23" y="28" width="2" height="12" rx="1" fill="#022C22"/>
+                      <rect x="34.6066" y="11.9792" width="2" height="12" rx="1" transform="rotate(45 34.6066 11.9792)" fill="#022C22"/>
+                      <rect x="20.4645" y="26.1213" width="2" height="12" rx="1" transform="rotate(45 20.4645 26.1213)" fill="#022C22"/>
+                      <rect x="28" y="25" width="2" height="12" rx="1" transform="rotate(-90 28 25)" fill="#022C22"/>
+                      <rect x="8" y="25" width="2" height="12" rx="1" transform="rotate(-90 8 25)" fill="#022C22"/>
+                      <rect x="26.1213" y="27.5355" width="2" height="12" rx="1" transform="rotate(-45 26.1213 27.5355)" fill="#022C22"/>
+                      <rect x="11.9792" y="13.3934" width="2" height="12" rx="1" transform="rotate(-45 11.9792 13.3934)" fill="#022C22"/>
+                    </svg>
+                    <div className="mt-6">
+                      <h5 className="text-2xl font-medium mb-3 text-white">Toujours à jour</h5>
+                      <p className="mb-6 text-white">Modifiez vos informations à tout moment. Tous ceux qui ont votre carte verront automatiquement les mises à jour.</p>
+                      {/* <a href="#!" className="inline-block text-lg font-medium hover:text-teal-700 text-white">Read more</a> */}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Wind Energy */}
+                <div className="w-full sm:w-1/2 px-4 mb-16 sm:mb-0">
+                  <div>
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="">
+                      <path d="M0 8C0 3.58172 3.58172 0 8 0H40C44.4183 0 48 3.58172 48 8V40C48 44.4183 44.4183 48 40 48H8C3.58172 48 0 44.4183 0 40V8Z" fill="white"/>
+                      <path d="M25 24C25 24.5523 24.5523 25 24 25C23.4477 25 23 24.5523 23 24C23 23.4477 23.4477 23 24 23C24.5523 23 25 23.4477 25 24Z" fill="#022C22"/>
+                      <path fillRule="evenodd" clipRule="evenodd" d="M24 25C24.5523 25 25 24.5523 25 24C25 23.4477 24.5523 23 24 23C23.4477 23 23 23.4477 23 24C23 24.5523 23.4477 25 24 25Z" fill="#022C22"/>
+                      <path fillRule="evenodd" clipRule="evenodd" d="M40 23C40.5523 23 41 23.4477 41 24C41 33.3888 33.3888 41 24 41C23.4477 41 23 40.5523 23 40C23 39.4477 23.4477 39 24 39C32.2843 39 39 32.2843 39 24C39 23.4477 39.4477 23 40 23Z" fill="#022C22"/>
+                      <path fillRule="evenodd" clipRule="evenodd" d="M24 9C15.7157 9 9 15.7157 9 24C9 24.5523 8.55228 25 8 25C7.44772 25 7 24.5523 7 24C7 14.6112 14.6112 7 24 7C24.5523 7 25 7.44772 25 8C25 8.55228 24.5523 9 24 9Z" fill="#022C22"/>
+                      <path fillRule="evenodd" clipRule="evenodd" d="M36 23C36.5523 23 37 23.4477 37 24C37 31.1797 31.1797 37 24 37C23.4477 37 23 36.5523 23 36C23 35.4477 23.4477 35 24 35C30.0751 35 35 30.0751 35 24C35 23.4477 35.4477 23 36 23Z" fill="#022C22"/>
+                      <path fillRule="evenodd" clipRule="evenodd" d="M24 13C17.9249 13 13 17.9249 13 24C13 24.5523 12.5523 25 12 25C11.4477 25 11 24.5523 11 24C11 16.8203 16.8203 11 24 11C24.5523 11 25 11.4477 25 12C25 12.5523 24.5523 13 24 13Z" fill="#022C22"/>
+                      <path fillRule="evenodd" clipRule="evenodd" d="M32 23C32.5523 23 33 23.4477 33 24C33 28.9706 28.9706 33 24 33C23.4477 33 23 32.5523 23 32C23 31.4477 23.4477 31 24 31C27.866 31 31 27.866 31 24C31 23.4477 31.4477 23 32 23Z" fill="#022C22"/>
+                      <path fillRule="evenodd" clipRule="evenodd" d="M24 17C20.134 17 17 20.134 17 24C17 24.5523 16.5523 25 16 25C15.4477 25 15 24.5523 15 24C15 19.0294 19.0294 15 24 15C24.5523 15 25 15.4477 25 16C25 16.5523 24.5523 17 24 17Z" fill="#022C22"/>
+                    </svg>
+                    <div className="mt-6">
+                      <h5 className="text-2xl font-medium mb-3 text-white">Sécurisé et privé</h5>
+                      <p className="mb-6 text-white">Vos données sont protégées et vous contrôlez exactement ce que vous partagez avec chaque contact.</p>
+                      {/* <a href="#!" className="inline-block text-lg font-medium hover:text-teal-700 text-white">Read more</a> */}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Hydropower */}
+                <div className="w-full sm:w-1/2 px-4">
+                  <div>
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="">
+                      <path d="M0 8C0 3.58172 3.58172 0 8 0H40C44.4183 0 48 3.58172 48 8V40C48 44.4183 44.4183 48 40 48H8C3.58172 48 0 44.4183 0 40V8Z" fill="white"/>
+                      <path d="M23.8425 12.3779C23.9008 12.238 24.0992 12.238 24.1575 12.3779L30.1538 26.7692C31.9835 31.1605 28.7572 36 24 36Lnan nanL24 36C19.2428 36 16.0165 31.1605 17.8462 26.7692L23.8425 12.3779Z" fill="#022C22"/>
+                    </svg>
+                    <div className="mt-6">
+                      <h5 className="text-2xl font-medium mb-3 text-white">Écologique</h5>
+                      <p className="mb-6 text-white">Zéro papier, zéro déchet. Une solution moderne et responsable pour votre networking professionnel.</p>
+                      {/* <a href="#!" className="inline-block text-lg font-medium hover:text-teal-700 text-white">Read more</a> */}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Commitment Section */}
+      <section className="py-12 lg:py-24 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto mb-24 text-center">
+            <h1 className="font-heading text-4xl sm:text-6xl md:text-7xl tracking-sm mb-16">
+              Faites comme les autres, procurez-vous déjà votre carte
+            </h1>
+            <a href="#!" className="inline-flex py-4 px-6 items-center justify-center text-lg font-medium text-white hover:text-teal-900 border border-teal-900 hover:border-lime-500 bg-teal-900 hover:bg-lime-500 rounded-full transition duration-200">
+              Souscrire
+            </a>
+          </div>
+          
+          <div className="flex justify-center">
+            <div className="shrink-0 h-full max-w-xs sm:max-w-md md:max-w-xl mr-4 sm:mr-8">
+              <Image className="block w-full" src="/fauna-assets/about/about-image2.png" width={60} height={60} alt="Green energy installation"/>
+            </div>
+            <div className="shrink-0 h-full max-w-xs sm:max-w-md md:max-w-xl mr-4 sm:mr-8">
+              <Image className="block w-full" src="/fauna-assets/about/about-image3.png" width={60} height={60} alt="Solar panels"/>
+            </div>
+            <div className="shrink-0 h-full max-w-xs sm:max-w-md md:max-w-xl mr-4 sm:mr-8">
+              <Image className="block w-full" src="/fauna-assets/about/about-image4.png" width={60} height={60} alt="Wind turbines"/>
+            </div>
+            <div className="shrink-0 h-full max-w-xs sm:max-w-md md:max-w-xl mr-4 sm:mr-8">
+              <Image className="block w-full" src="/fauna-assets/about/about-image2.png" width={60} height={60} alt="Green energy installation"/>
+            </div>
+            <div className="hidden md:block sm:shrink-0 h-full max-w-md md:max-w-xl mr-4 sm:mr-8">
+              <Image className="block w-full" src="/fauna-assets/about/about-image3.png" width={60} height={60} alt="Solar panels"/>
+            </div>
+            <div className="hidden md:block sm:shrink-0 h-full max-w-md md:max-w-xl mr-4 sm:mr-8">
+              <Image className="block w-full" src="/fauna-assets/about/about-image4.png" width={60} height={60} alt="Wind turbines"/>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-12 lg:py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-20">
+            <h1 className="font-heading text-6xl mb-6">FAQ</h1>
+            <p className="text-gray-700">Here you will find the answers to the frequently asked questions.</p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            {/* <Accordion title="What is green energy?">
+              We provide a range of green energy solutions, including solar power systems, wind turbines, energy-efficient appliances, and smart home technologies to enhance energy sustainability.
+            </Accordion>
+            
+            <Accordion title="How does green energy benefit the environment?">
+              We provide a range of green energy solutions, including solar power systems, wind turbines, energy-efficient appliances, and smart home technologies to enhance energy sustainability.
+            </Accordion>
+            
+            <Accordion title="What green energy solutions does your company offer?">
+              We provide a range of green energy solutions, including solar power systems, wind turbines, energy-efficient appliances, and smart home technologies to enhance energy sustainability.
+            </Accordion>
+            
+            <Accordion title="What support services do you offer after installing green energy solutions?">
+              We provide a range of green energy solutions, including solar power systems, wind turbines, energy-efficient appliances, and smart home technologies to enhance energy sustainability.
+            </Accordion>
+            
+            <Accordion title="How do solar panels work?">
+              We provide a range of green energy solutions, including solar power systems, wind turbines, energy-efficient appliances, and smart home technologies to enhance energy sustainability.
+            </Accordion> */}
+            
+            <div className="sm:flex py-10 px-5 sm:px-10 bg-orange-50 rounded-2xl">
+              <div className="mb-4 sm:mb-0 sm:mr-6">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="">
+                  <path d="M0 8C0 3.58172 3.58172 0 8 0H40C44.4183 0 48 3.58172 48 8V40C48 44.4183 44.4183 48 40 48H8C3.58172 48 0 44.4183 0 40V8Z" fill="#BEF264"/>
+                  <path d="M13.676 15.5617C11.7951 17.8602 10.6666 20.7983 10.6666 24C10.6666 27.2017 11.7951 30.1398 13.6761 32.4383L18.9201 27.1943C18.3372 26.2694 18 25.174 18 24C18 22.8259 18.3372 21.7306 18.92 20.8057L13.676 15.5617Z" fill="#022C22"/>
+                  <path d="M15.5616 13.6761L20.8056 18.9201C21.7306 18.3372 22.8259 18 24 18C25.174 18 26.2694 18.3372 27.1943 18.9201L32.4383 13.6761C30.1398 11.7951 27.2017 10.6666 24 10.6666C20.7982 10.6666 17.8601 11.7951 15.5616 13.6761Z" fill="#022C22"/>
+                  <path d="M34.3239 15.5617L29.0799 20.8057C29.6628 21.7307 30 22.8259 30 24C30 25.174 29.6627 26.2693 29.0799 27.1943L34.3238 32.4383C36.2048 30.1398 37.3333 27.2017 37.3333 24C37.3333 20.7983 36.2048 17.8602 34.3239 15.5617Z" fill="#022C22"/>
+                  <path d="M32.4382 34.3239L27.1942 29.0799C26.2693 29.6628 25.174 30 24 30C22.8259 30 21.7307 29.6628 20.8057 29.0799L15.5617 34.3239C17.8602 36.2048 20.7983 37.3333 24 37.3333C27.2016 37.3333 30.1397 36.2048 32.4382 34.3239Z" fill="#022C22"/>
+                </svg>
+              </div>
+              <div>
+                <h5 className="text-xl font-medium mb-4">Still have questions?</h5>
+                <p className="text-gray-700">
+                  <span>For assistance, please visit our </span>
+                  <a href="#!" className="inline-block text-black font-medium underline">Contact Us</a>
+                  <span> page or call our customer support hotline at </span>
+                  <span className="text-black font-medium">(671) 555-0110</span>
+                  <span>. Our dedicated team is ready to help you on your journey to a greener, more sustainable future.</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-12 lg:py-24 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap items-center -mx-4">
+            <div className="w-full md:w-1/2 px-4 mb-12 md:mb-0">
+              <div className="max-w-lg mx-auto md:mx-0 overflow-hidden">
+                <div 
+                  className="flex -mx-4 transition-transform duration-500"
+                  style={{ transform: `translateX(-${(activeSlide - 1) * 100}%)` }}
+                >
+                  <Image className="block shrink-0 w-full px-4" src="/fauna-assets/testimonials/photo-lg.png" width={60} height={60} alt="Testimonial"/>
+                  <Image className="block shrink-0 w-full px-4" src="/fauna-assets/testimonials/photo-lg.png" width={60} height={60} alt="Testimonial"/>
+                  <Image className="block shrink-0 w-full px-4" src="/fauna-assets/testimonials/photo-lg.png" width={60} height={60} alt="Testimonial"/>
+                </div>
+              </div>
+            </div>
+            
+            <div className="w-full md:w-1/2 px-4">
+              <div className="max-w-lg mx-auto md:mr-0 overflow-hidden">
+                <div 
+                  className="flex -mx-4 transition-transform duration-500"
+                  style={{ transform: `translateX(-${(activeSlide - 1) * 100}%)` }}
+                >
+                  <div className="shrink-0 px-4 w-full">
+                    <h4 className="text-3xl lg:text-4xl font-medium mb-10">
+                      "Flow transformed my energy use. Efficient, green tech, outstanding service!"
+                    </h4>
+                    <span className="block text-xl font-medium">Jenny Wilson</span>
+                    <span className="block mb-12 lg:mb-32 text-lg text-gray-700">Solar energy service</span>
+                  </div>
+                  
+                  <div className="shrink-0 px-4 w-full">
+                    <h4 className="text-3xl lg:text-4xl font-medium mb-10">
+                      "Efficient, green tech, outstanding service"
+                    </h4>
+                    <span className="block text-xl font-medium">John Jones</span>
+                    <span className="block mb-12 lg:mb-32 text-lg text-gray-700">CEO Solar Company</span>
+                  </div>
+                  
+                  <div className="shrink-0 px-4 w-full">
+                    <h4 className="text-3xl lg:text-4xl font-medium mb-10">
+                      "Flow transformed my energy use, efficient, green tech, outstanding service."
+                    </h4>
+                    <span className="block text-xl font-medium">James Harrison</span>
+                    <span className="block mb-12 lg:mb-32 text-lg text-gray-700">Developer</span>
+                  </div>
+                </div>
+                
+                <div>
+                  <button 
+                    onClick={prevSlide}
+                    className="inline-block mr-4 text-gray-700 hover:text-lime-500"
+                  >
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="">
+                      <path d="M24.4 16H7.59998" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M16 24.4L7.59998 16L16 7.59998" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
+                  
+                  <button 
+                    onClick={nextSlide}
+                    className="inline-block text-gray-700 hover:text-lime-500"
+                  >
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="">
+                      <path d="M7.59998 16H24.4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M16 7.59998L24.4 16L16 24.4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <div>
+        <section>
+          <div className="p-4">
+            <div className="max-w-xl lg:max-w-5xl mx-auto xl:max-w-none px-5 md:px-12 xl:px-24 py-16 bg-teal-900 rounded-2xl">
+              <div className="container mx-auto px-4">
+                <div className="flex flex-wrap items-center -mx-4">
+                  <div className="w-full lg:w-2/3 px-4 mb-8 lg:mb-0">
+                    <div className="max-w-md xl:max-w-none">
+                      <h1 className="font-heading text-4xl xs:text-5xl sm:text-6xl tracking-sm text-white mb-6">
+                        Intégration facicile avec tous vos comptes
+                      </h1>
+                      <p className="text-lg text-white opacity-80">
+                        Vous pouvez intégrer facilement et simplement tous vos compte pour permettre à vos visiteur 
+                        d'atterir directement sur votre profil
+                      </p>
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-1/3 px-4 lg:text-right">
+                    <a href="#!" className="inline-flex py-4 px-6 items-center justify-center text-lg font-medium text-teal-900 border border-lime-500 hover:border-white bg-lime-500 hover:bg-white rounded-full transition duration-200">
+                      Get Started
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      {/* Footer */}
+      <section className="relative py-12 lg:py-24 bg-orange-50 overflow-hidden">
+        <Image className="absolute bottom-0 left-0" src="/fauna-assets/footer/waves-lines-left-bottom.png" width={60} height={60} alt=""/>
+        <div className="container px-4 mx-auto relative">
+          <div className="flex flex-wrap mb-16 -mx-4">
+            <div className="w-full lg:w-2/12 xl:w-2/12 px-4 mb-16 lg:mb-0">
+              <a className="inline-block mb-4" href="#!">
+                <Image src="/images/logo.svg" width={60} height={60} alt="Logo"/>
+              </a>
+            </div>
+            
+            <div className="w-full md:w-7/12 lg:w-6/12 px-4 mb-16 lg:mb-0">
+              <div className="flex flex-wrap -mx-4">
+                <div className="w-1/2 xs:w-1/3 px-4 mb-8 xs:mb-0">
+                  <h3 className="mb-6 font-bold">Platform</h3>
+                  <ul>
+                    <li className="mb-4">
+                      <a className="inline-block text-gray-600 hover:text-lime-500 font-medium" href="#!">Solutions</a>
+                    </li>
+                    <li className="mb-4">
+                      <a className="inline-block text-gray-600 hover:text-lime-500 font-medium" href="#!">How it works</a>
+                    </li>
+                    <li>
+                      <a className="inline-block text-gray-600 hover:text-lime-500 font-medium" href="#!">Pricing</a>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div className="w-1/2 xs:w-1/3 px-4 mb-8 xs:mb-0">
+                  <h3 className="mb-6 font-bold">Resources</h3>
+                  <ul>
+                    <li className="mb-4">
+                      <a className="inline-block text-gray-600 hover:text-lime-500 font-medium" href="#!">Blog</a>
+                    </li>
+                    <li className="mb-4">
+                      <a className="inline-block text-gray-600 hover:text-lime-500 font-medium" href="#!">Help Center</a>
+                    </li>
+                    <li>
+                      <a className="inline-block text-gray-600 hover:text-lime-500 font-medium" href="#!">Support</a>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div className="w-full xs:w-1/3 px-4">
+                  <h3 className="mb-6 font-bold">Company</h3>
+                  <ul>
+                    <li className="mb-4">
+                      <a className="inline-block text-gray-600 hover:text-lime-500 font-medium" href="#!">About</a>
+                    </li>
+                    <li className="mb-4">
+                      <a className="inline-block text-gray-600 hover:text-lime-500 font-medium" href="#!">Our Mission</a>
+                    </li>
+                    <li className="mb-4">
+                      <a className="inline-block text-gray-600 hover:text-lime-500 font-medium" href="#!">Careers</a>
+                    </li>
+                    <li>
+                      <a className="inline-block text-gray-600 hover:text-lime-500 font-medium" href="#!">Contact</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div className="w-full md:w-5/12 lg:w-4/12 px-4">
+              <div className="max-w-sm p-8 bg-teal-900 rounded-2xl mx-auto md:mr-0">
+                <h5 className="text-xl font-medium text-white mb-4">Your Source for Green Energy Updates</h5>
+                <p className="text-sm text-white opacity-80 leading-normal mb-10">
+                  Stay in the loop with our Green Horizon newsletter, where we deliver bite-sized insights into the latest green energy solutions.
+                </p>
+                <div className="flex flex-col">
+                  <input type="email" className="h-12 w-full px-4 py-1 placeholder-gray-700 outline-none ring-offset-0 focus:ring-2 focus:ring-lime-500 shadow rounded-full" placeholder="Your e-mail..."/>
+                  <a href="#!" className="h-12 inline-flex mt-3 py-1 px-5 items-center justify-center font-medium text-teal-900 border border-lime-500 hover:border-white bg-lime-500 hover:bg-white rounded-full transition duration-200">
+                    Get in touch
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="flex flex-wrap -mb-3 justify-between">
+            <div className="flex items-center mb-3">
+              <a href="#!" className="inline-block mr-4 text-black hover:text-lime-500">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="">
+                  <g clipPath="url(#clip0_230_4832)">
+                    <path d="M11.5481 19.9999V10.8776H14.6088L15.068 7.32147H11.5481V5.05138C11.5481 4.02211 11.8327 3.32067 13.3104 3.32067L15.1919 3.3199V0.139138C14.8665 0.0968538 13.7496 -9.15527e-05 12.4496 -9.15527e-05C9.735 -9.15527e-05 7.87654 1.65687 7.87654 4.69918V7.32147H4.80652V10.8776H7.87654V19.9999H11.5481Z" fill="currentColor"/>
+                  </g>
+                </svg>
+              </a>
+              
+              <a href="#!" className="inline-block mr-4 text-black hover:text-lime-500">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="">
+                  <path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2C22 17.7383 21.3889 19.2135 20.3012 20.3012C19.2135 21.3889 17.7383 22 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8C2 6.26174 2.61107 4.78649 3.69878 3.69878C4.78649 2.61107 6.26174 2 7.8 2ZM7.6 4C6.64522 4 5.72955 4.37928 5.05442 5.05442C4.37928 5.72955 4 6.64522 4 7.6V16.4C4 18.39 5.61 20 7.6 20H16.4C17.3548 20 18.2705 19.6207 18.9456 18.9456C19.6207 18.2705 20 17.3548 20 16.4V7.6C20 5.61 18.39 4 16.4 4H7.6ZM17.25 5.5C17.5815 5.5 17.8995 5.6317 18.1339 5.86612C18.3683 6.10054 18.5 6.41848 18.5 6.75C18.5 7.08152 18.3683 7.39946 18.1339 7.63388C17.8995 7.8683 17.5815 8 17.25 8C16.9185 8 16.6005 7.8683 16.3661 7.63388C16.1317 7.39946 16 7.08152 16 6.75C16 6.41848 16.1317 6.10054 16.3661 5.86612C16.6005 5.6317 16.9185 5.5 17.25 5.5ZM12 7C13.3261 7 14.5979 7.52678 15.5355 8.46447C16.4732 9.40215 17 10.6739 17 12C17 13.3261 16.4732 14.5979 15.5355 15.5355C14.5979 16.4732 13.3261 17 12 17C10.6739 17 9.40215 16.4732 8.46447 15.5355C7.52678 14.5979 7 13.3261 7 12C7 10.6739 7.52678 9.40215 8.46447 8.46447C9.40215 7.52678 10.6739 7 12 7ZM12 9C11.2044 9 10.4413 9.31607 9.87868 9.87868C9.31607 10.4413 9 11.2044 9 12C9 12.7956 9.31607 13.5587 9.87868 14.1213C10.4413 14.6839 11.2044 15 12 15C12.7956 15 13.5587 14.6839 14.1213 14.1213C14.6839 13.5587 15 12.7956 15 12C15 11.2044 14.6839 10.4413 14.1213 9.87868C13.5587 9.31607 12.7956 9 12 9Z" fill="currentColor"/>
+                </svg>
+              </a>
+              
+              <a href="#!" className="inline-block text-black hover:text-lime-500">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="">
+                  <path d="M19 3C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19ZM18.5 18.5V13.2C18.5 12.3354 18.1565 11.5062 17.5452 10.8948C16.9338 10.2835 16.1046 9.94 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17C14.6813 12.17 15.0374 12.3175 15.2999 12.5801C15.5625 12.8426 15.71 13.1987 15.71 13.57V18.5H18.5ZM6.88 8.56C7.32556 8.56 7.75288 8.383 8.06794 8.06794C8.383 7.75288 8.56 7.32556 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19C6.43178 5.19 6.00193 5.36805 5.68499 5.68499C5.36805 6.00193 5.19 6.43178 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56ZM8.27 18.5V10.13H5.5V18.5H8.27Z" fill="currentColor"/>
+                </svg>
+              </a>
+            </div>
+            
+            <div className="text-center">
+              Created by{' '}
+              <a className="inline-block text-gray-600 hover:text-lime-500 font-medium" href="https://www.ghennysoft.com" target="_blank" rel="noopener noreferrer">
+                GhennySoft
+              </a>
+              {/* {' '}• Distributed by{' '}
+              <a className="inline-block text-gray-600 hover:text-lime-500 font-medium" href="https://www.ThemeWagon.store" target="_blank" rel="noopener noreferrer">
+                ThemeWagon
+              </a> */}
+            </div>
+            
+            <p className="text-sm text-gray-500 mb-3">© {new Date().getFullYear()} La carte Boss. Tout droits reservé.</p>
+          </div>
+        </div>
+      </section>
     </div>
   );
-}
+};
