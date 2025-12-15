@@ -35,7 +35,7 @@ export default function NavBar() {
                   <Link className="inline-block hover:blue-950 font-medium" href="/">Accueil</Link>
                 </li>
                 <li className="mr-8">
-                  <a className="inline-block hover:blue-950 font-medium" href="">A propos</a>
+                  <a className="inline-block hover:blue-950 font-medium" href="/about">A propos</a>
                 </li>
                 {/* <li className="mr-8">
                   <a className="inline-block hover:blue-950 font-medium" href="pricing.html">Prix</a>
@@ -84,9 +84,9 @@ export default function NavBar() {
           ></div>
           <nav className="relative flex flex-col pt-5 pb-7 px-5 w-full h-full bg-white overflow-y-auto">
             <div className="flex items-center justify-between">
-              <a href="#!" className="inline-block">
+              <Link href="/" className="inline-block">
                 <img src="/logo2.png" width={120} height={80} alt="Logo" />
-              </a>
+              </Link>
               <div className="flex items-center">
                 <button onClick={() => setMobileNavOpen(false)}>
                   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="">
@@ -99,7 +99,7 @@ export default function NavBar() {
             <div className="pt-8 pb-12 mb-auto">
               <ul className="flex-col">
                 <li className="mb-6">
-                  <a className="inline-block font-medium" href="">A propos de nous</a>
+                  <a className="inline-block font-medium" href="/about">A propos de nous</a>
                 </li>
                 {/* <li className="mb-6">
                   <a className="inline-block font-medium" href="pricing.html">Pricing</a>

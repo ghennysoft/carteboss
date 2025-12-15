@@ -64,7 +64,7 @@ export default function Footer() {
             </div>
             
             <div className="text-center">
-              Créé par{' '}
+              Designed by{' '}
               <a className="inline-block text-gray-600 hover:blue-950 font-medium" href="https://www.ghennysoft.com" target="_blank" rel="noopener noreferrer">
                 GhennySoft
               </a>
@@ -74,7 +74,7 @@ export default function Footer() {
               </a> */}
             </div>
             
-            <p className="text-sm text-gray-500 mb-3">© {new Date().getFullYear()} La carte Boss. Tout droits reservé.</p>
+            <p className="text-sm text-gray-500 mb-3 text-center">© {new Date().getFullYear()} La carte Boss. Tout droits reservé.</p>
           </div>
         </div>
       </section>
