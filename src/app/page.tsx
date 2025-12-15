@@ -1,11 +1,15 @@
 "use client"
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import Footer from '../components/footer';
+import NavBar from '../components/navbar';
+import { useState, ReactNode } from 'react';
+
+interface AccordionProps {
+  title: string,
+  children: ReactNode,
+}
 
 export default function Home() {
-  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [activeSlide, setActiveSlide] = useState(1);
   const slideCount = 3;
 
@@ -18,20 +22,8 @@ export default function Home() {
     setActiveSlide(activeSlide > 1 ? activeSlide - 1 : slideCount);
   };
 
-  // Fermer le menu mobile quand on clique sur un lien
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setMobileNavOpen(false);
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   // Composant Accordion pour la FAQ
-  const Accordion = ({ title, children }) => {
+  const Accordion: React.FC<AccordionProps> = ({ title, children }) => {
     const [isOpen, setIsOpen] = useState(false);
     return (
       <button 
@@ -50,12 +42,12 @@ export default function Home() {
         </div>
         <span className="shrink-0">
           {!isOpen ? (
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="" className='cursor-pointer'>
               <path d="M12 5.69995V18.3" stroke="#1D1F1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               <path d="M5.69995 12H18.3" stroke="#1D1F1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           ) : (
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="" className='cursor-pointer'>
               <path d="M5.69995 12H18.3" stroke="#1D1F1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           )}
@@ -67,151 +59,24 @@ export default function Home() {
   return (
     <div className="antialiased bg-body text-body font-body">
       {/* Header */}
-      <section className="relative">
-        {/* <img className="absolute top-0 left-0 right-0 bottom-0 object-cover w-full h-full" src="/fauna-assets/headers/bg2.jpg" alt="" /> */}
-        <nav className="py-6">
-          <div className="container mx-auto px-4">
-            <div className="relative flex items-center justify-between">
-              <Link href="/" className="inline-block">
-                <Image src="/logo2.png" width={120} height={80} alt="Logo" />
-              </Link>
-              
-              <ul className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden md:flex">
-                <li className="mr-8">
-                  <Link className="inline-block hover:blue-950 font-medium" href="/">Accueil</Link>
-                </li>
-                <li className="mr-8">
-                  <a className="inline-block hover:blue-950 font-medium" href="">A propos</a>
-                </li>
-                {/* <li className="mr-8">
-                  <a className="inline-block hover:blue-950 font-medium" href="pricing.html">Prix</a>
-                </li> */}
-                <li className="mr-8">
-                  <a className="inline-block hover:blue-950 font-medium" href="">Nous contacter</a>
-                </li>
-                {/* <li>
-                  <a className="inline-block hover:blue-950 font-medium" href="blog.html">Blog</a>
-                </li> */}
-              </ul>
-
-              <div className="flex items-center justify-end">
-                <div className="hidden md:block">
-                  <a href="contact.html" className="inline-flex group py-2.5 px-4 items-center justify-center text-sm font-medium  hover:text-blue-950 border hover:bg-blue-950 rounded-full transition duration-200">
-                    <span className="mr-2">Souscrire</span>
-                    <span className="transform group-hover:translate-x-0.5 transition-transform duration-200">
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="">
-                        <path d="M4.75 10H15.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M10 4.75L15.25 10L10 15.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </span>
-                  </a>
-                </div>
-                
-                <button 
-                  onClick={() => setMobileNavOpen(!mobileNavOpen)}
-                  className="md:hidden"
-                >
-                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="">
-                    <path d="M5.19995 23.2H26.7999" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M5.19995 16H26.7999" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M5.19995 8.79999H26.7999" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
+      <NavBar />
+      
+      <div className="relative pt-10 md:pt-14">
+        <div className="container mx-auto px-4 relative grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="max-w-lg xl:max-w-xl mx-auto text-center lg:text-left">
+            <h1 className="font-heading text-5xl font-bold xs:text-7xl xl:text-7xl text-blue-950 tracking-tight mb-8">
+              Soyez professionnel avec une carte de visite numérique
+            </h1>
+            <p className="max-w-md xl:max-w-none text-lg opacity-80 mb-10">
+              Partagez vos informations professionnelles instantanément avec un simple code QR. Moderne, écologique et toujours à jour. 
+            </p>
+            {/* <a href="#!" className="inline-flex py-4 px-6 items-center justify-center text-lg font-medium text-teal-900 border border-lime-500 hover:border-white bg-lime-500 hover:bg-white rounded-full transition duration-200">
+              See our solutions
+            </a> */}
           </div>
-        </nav>
-
-        <div className="relative pt-10 md:pt-14">
-          <div className="container mx-auto px-4 relative grid grid-cols-1 md:grid-cols-2 gap-3">
-            <div className="max-w-lg xl:max-w-xl mx-auto text-center lg:text-left">
-              <h1 className="font-heading text-5xl font-bold xs:text-7xl xl:text-7xl text-blue-950 tracking-tight mb-8">
-                Soyez professionnel avec une carte de visite numérique
-              </h1>
-              <p className="max-w-md xl:max-w-none text-lg opacity-80 mb-10">
-                Partagez vos informations professionnelles instantanément avec un simple code QR. Moderne, écologique et toujours à jour. 
-              </p>
-              {/* <a href="#!" className="inline-flex py-4 px-6 items-center justify-center text-lg font-medium text-teal-900 border border-lime-500 hover:border-white bg-lime-500 hover:bg-white rounded-full transition duration-200">
-                See our solutions
-              </a> */}
-            </div>
-            <img src="/img-banner.png" className='w-full lg:-mt-10' alt="banner img" />
-          </div>
+          <img src="/img-banner.png" className='w-full lg:-mt-10' alt="banner img" />
         </div>
-
-        {/* Mobile Navigation */}
-        <div className={`${mobileNavOpen ? 'block' : 'hidden'} fixed top-0 left-0 bottom-0 w-full xs:w-5/6 xs:max-w-md z-50`}>
-          <div 
-            onClick={() => setMobileNavOpen(false)}
-            className="fixed inset-0 bg-violet-900 opacity-20"
-          ></div>
-          <nav className="relative flex flex-col py-7 px-10 w-full h-full bg-white overflow-y-auto">
-            <div className="flex items-center justify-between">
-              <a href="#!" className="inline-block">
-                <Image className="h-8" src="/logo2.png" width={120} height={80} alt="Logo" />
-              </a>
-              <div className="flex items-center">
-                <a href="#!" className="inline-flex py-2.5 px-4 mr-6 items-center justify-center text-sm font-medium text-teal-900 hover:text-white border border-teal-900 hover:bg-teal-900 rounded-full transition duration-200">
-                  Souscrire
-                </a>
-                <button onClick={() => setMobileNavOpen(false)}>
-                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="">
-                    <path d="M23.2 8.79999L8.80005 23.2M8.80005 8.79999L23.2 23.2" stroke="#1D1F1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            <div className="pt-20 pb-12 mb-auto">
-              <ul className="flex-col">
-                <li className="mb-6">
-                  <a className="inline-block text-teal-900 hover:text-teal-700 font-medium" href="">A propos de nous</a>
-                </li>
-                {/* <li className="mb-6">
-                  <a className="inline-block text-teal-900 hover:text-teal-700 font-medium" href="pricing.html">Pricing</a>
-                </li> */}
-                <li className="mb-6">
-                  <a className="inline-block text-teal-900 hover:text-teal-700 font-medium" href="">Nous contacter</a>
-                </li>
-                {/* <li>
-                  <a className="inline-block text-teal-900 hover:text-teal-700 font-medium" href="blog.html">Blog</a>
-                </li> */}
-              </ul>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <a href="#!" className="inline-flex items-center text-lg font-medium text-teal-900">
-                <span>
-                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="">
-                    <path d="M6.4 6.39999H25.6C26.92 6.39999 28 7.47999 28 8.79999V23.2C28 24.52 26.92 25.6 25.6 25.6H6.4C5.08 25.6 4 24.52 4 23.2V8.79999C4 7.47999 5.08 6.39999 6.4 6.39999Z" stroke="#646A69" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M28 8.8L16 17.2L4 8.8" stroke="#646A69" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </span>
-                <span className="ml-2">Newsletter</span>
-              </a>
-              <div className="flex items-center">
-                <a href="#!" className="inline-block mr-4">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="">
-                    <g clipPath="url(#clip0_282_7847)">
-                      <path d="M11.548 19.9999V10.8776H14.6087L15.0679 7.32146H11.548V5.05136C11.548 4.02209 11.8326 3.32066 13.3103 3.32066L15.1918 3.31988V0.139123C14.8664 0.0968385 13.7495 -0.000106812 12.4495 -0.000106812C9.73488 -0.000106812 7.87642 1.65686 7.87642 4.69916V7.32146H4.8064V10.8776H7.87642V19.9999H11.548Z" fill="#022C22"/>
-                    </g>
-                  </svg>
-                </a>
-                <a href="#!" className="inline-block mr-4">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="">
-                    <path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2C22 17.7383 21.3889 19.2135 20.3012 20.3012C19.2135 21.3889 17.7383 22 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8C2 6.26174 2.61107 4.78649 3.69878 3.69878C4.78649 2.61107 6.26174 2 7.8 2ZM7.6 4C6.64522 4 5.72955 4.37928 5.05442 5.05442C4.37928 5.72955 4 6.64522 4 7.6V16.4C4 18.39 5.61 20 7.6 20H16.4C17.3548 20 18.2705 19.6207 18.9456 18.9456C19.6207 18.2705 20 17.3548 20 16.4V7.6C20 5.61 18.39 4 16.4 4H7.6ZM17.25 5.5C17.5815 5.5 17.8995 5.6317 18.1339 5.86612C18.3683 6.10054 18.5 6.41848 18.5 6.75C18.5 7.08152 18.3683 7.39946 18.1339 7.63388C17.8995 7.8683 17.5815 8 17.25 8C16.9185 8 16.6005 7.8683 16.3661 7.63388C16.1317 7.39946 16 7.08152 16 6.75C16 6.41848 16.1317 6.10054 16.3661 5.86612C16.6005 5.6317 16.9185 5.5 17.25 5.5ZM12 7C13.3261 7 14.5979 7.52678 15.5355 8.46447C16.4732 9.40215 17 10.6739 17 12C17 13.3261 16.4732 14.5979 15.5355 15.5355C14.5979 16.4732 13.3261 17 12 17C10.6739 17 9.40215 16.4732 8.46447 15.5355C7.52678 14.5979 7 13.3261 7 12C7 10.6739 7.52678 9.40215 8.46447 8.46447C9.40215 7.52678 10.6739 7 12 7ZM12 9C11.2044 9 10.4413 9.31607 9.87868 9.87868C9.31607 10.4413 9 11.2044 9 12C9 12.7956 9.31607 13.5587 9.87868 14.1213C10.4413 14.6839 11.2044 15 12 15C12.7956 15 13.5587 14.6839 14.1213 14.1213C14.6839 13.5587 15 12.7956 15 12C15 11.2044 14.6839 10.4413 14.1213 9.87868C13.5587 9.31607 12.7956 9 12 9Z" fill="currentColor"/>
-                  </svg>
-                </a>
-                <a href="#!" className="inline-block">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="">
-                    <path d="M19 3C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19ZM18.5 18.5V13.2C18.5 12.3354 18.1565 11.5062 17.5452 10.8948C16.9338 10.2835 16.1046 9.94 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17C14.6813 12.17 15.0374 12.3175 15.2999 12.5801C15.5625 12.8426 15.71 13.1987 15.71 13.57V18.5H18.5ZM6.88 8.56C7.32556 8.56 7.75288 8.383 8.06794 8.06794C8.383 7.75288 8.56 7.32556 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19C6.43178 5.19 6.00193 5.36805 5.68499 5.68499C5.36805 6.00193 5.19 6.43178 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56ZM8.27 18.5V10.13H5.5V18.5H8.27Z" fill="currentColor"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </nav>
-        </div>
-      </section>
+      </div>
 
       {/* Stats Section */}
       <section className="py-12 lg:py-24">
@@ -354,38 +219,34 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      {/* <section className="py-12 lg:py-24">
+      <section className="py-12 lg:py-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <h1 className="font-heading text-6xl mb-6">FAQ</h1>
-            <p className="text-gray-700">Here you will find the answers to the frequently asked questions.</p>
+            <p className="text-gray-700">Questions fréquement posées.</p>
           </div>
           
           <div className="max-w-4xl mx-auto">
-            <Accordion title="What is green energy?">
-              We provide a range of green energy solutions, including solar power systems, wind turbines, energy-efficient appliances, and smart home technologies to enhance energy sustainability.
+            <Accordion title="Qui sommes-nous ?">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Est natus molestias illo adipisci dolorum quae culpa voluptatum ipsum odio quasi error officiis ab hic, sit nesciunt modi saepe dolorem animi.
             </Accordion>
             
-            <Accordion title="How does green energy benefit the environment?">
-              We provide a range of green energy solutions, including solar power systems, wind turbines, energy-efficient appliances, and smart home technologies to enhance energy sustainability.
+            <Accordion title="Comment souscrire ?">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Est natus molestias illo adipisci dolorum quae culpa voluptatum ipsum odio quasi error officiis ab hic, sit nesciunt modi saepe dolorem animi.
             </Accordion>
             
-            <Accordion title="What green energy solutions does your company offer?">
-              We provide a range of green energy solutions, including solar power systems, wind turbines, energy-efficient appliances, and smart home technologies to enhance energy sustainability.
+            <Accordion title="Combien de temps dure la souscription ?">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Est natus molestias illo adipisci dolorum quae culpa voluptatum ipsum odio quasi error officiis ab hic, sit nesciunt modi saepe dolorem animi.
             </Accordion>
             
-            <Accordion title="What support services do you offer after installing green energy solutions?">
-              We provide a range of green energy solutions, including solar power systems, wind turbines, energy-efficient appliances, and smart home technologies to enhance energy sustainability.
-            </Accordion>
-            
-            <Accordion title="How do solar panels work?">
-              We provide a range of green energy solutions, including solar power systems, wind turbines, energy-efficient appliances, and smart home technologies to enhance energy sustainability.
+            <Accordion title="Comment mettre à jour mes informations ?">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Est natus molestias illo adipisci dolorum quae culpa voluptatum ipsum odio quasi error officiis ab hic, sit nesciunt modi saepe dolorem animi.
             </Accordion>
             
             <div className="sm:flex py-10 px-5 sm:px-10 bg-orange-50 rounded-2xl">
               <div className="mb-4 sm:mb-0 sm:mr-6">
                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="">
-                  <path d="M0 8C0 3.58172 3.58172 0 8 0H40C44.4183 0 48 3.58172 48 8V40C48 44.4183 44.4183 48 40 48H8C3.58172 48 0 44.4183 0 40V8Z" fill="#BEF264"/>
+                  <path d="M0 8C0 3.58172 3.58172 0 8 0H40C44.4183 0 48 3.58172 48 8V40C48 44.4183 44.4183 48 40 48H8C3.58172 48 0 44.4183 0 40V8Z" fill="#1Ea2fa"/>
                   <path d="M13.676 15.5617C11.7951 17.8602 10.6666 20.7983 10.6666 24C10.6666 27.2017 11.7951 30.1398 13.6761 32.4383L18.9201 27.1943C18.3372 26.2694 18 25.174 18 24C18 22.8259 18.3372 21.7306 18.92 20.8057L13.676 15.5617Z" fill="#022C22"/>
                   <path d="M15.5616 13.6761L20.8056 18.9201C21.7306 18.3372 22.8259 18 24 18C25.174 18 26.2694 18.3372 27.1943 18.9201L32.4383 13.6761C30.1398 11.7951 27.2017 10.6666 24 10.6666C20.7982 10.6666 17.8601 11.7951 15.5616 13.6761Z" fill="#022C22"/>
                   <path d="M34.3239 15.5617L29.0799 20.8057C29.6628 21.7307 30 22.8259 30 24C30 25.174 29.6627 26.2693 29.0799 27.1943L34.3238 32.4383C36.2048 30.1398 37.3333 27.2017 37.3333 24C37.3333 20.7983 36.2048 17.8602 34.3239 15.5617Z" fill="#022C22"/>
@@ -393,19 +254,19 @@ export default function Home() {
                 </svg>
               </div>
               <div>
-                <h5 className="text-xl font-medium mb-4">Still have questions?</h5>
+                <h5 className="text-xl font-medium mb-4">Vous avez toujours des questions ?</h5>
                 <p className="text-gray-700">
-                  <span>For assistance, please visit our </span>
-                  <a href="#!" className="inline-block text-black font-medium underline">Contact Us</a>
-                  <span> page or call our customer support hotline at </span>
-                  <span className="text-black font-medium">(671) 555-0110</span>
-                  <span>. Our dedicated team is ready to help you on your journey to a greener, more sustainable future.</span>
+                  <span>Pour assistance, allez sur la page </span>
+                  <a href="/contact" className="inline-block text-black font-medium underline">Nous contacter</a>
+                  <span> ou appellez notre service client au </span>
+                  <span className="text-black font-medium">(243) xxx xxx xxx.</span>
+                  <span> Notre équipe est prêt à vous accompagner.</span>
                 </p>
               </div>
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Testimonials Section */}
       {/* <section className="py-12 lg:py-24 overflow-hidden">
@@ -482,81 +343,8 @@ export default function Home() {
         </div>
       </section> */}
 
-      {/* CTA Section */}
-      <div>
-        <section>
-          <div className="p-4">
-            <div className="lg:max-w-5xl mx-auto xl:max-w-none px-5 md:px-12 xl:px-24 py-16 bg-orange-300 rounded-2xl">
-              <div className="container mx-auto px-4">
-                <div className="flex flex-wrap items-center -mx-4">
-                  <div className="w-full lg:w-2/3 px-4 mb-8 lg:mb-0">
-                    <div className="max-w-md xl:max-w-none">
-                      <h1 className="font-heading text-4xl xs:text-5xl sm:text-6xl tracking-sm text-white mb-6">
-                        Intégration facicile avec tous vos comptes
-                      </h1>
-                      <p className="text-lg text-white opacity-80">
-                        Vous pouvez intégrer facilement et simplement tous vos compte pour permettre à vos visiteur 
-                        d&apos;atterir directement sur votre profil
-                      </p>
-                    </div>
-                  </div>
-                  <div className="w-full lg:w-1/3 px-4 lg:text-right">
-                    <img src="/social/facebook.png" width={65} alt="facebook" className='inline-block m-2 rounded-full' />
-                    <img src="/social/gmail.png" width={65} alt="gmail" className='inline-block m-2 rounded-full' />
-                    <img src="/social/instagram.png" width={65} alt="instagram" className='inline-block m-2 rounded-full' />
-                    <img src="/social/linkedin.jpg" width={65} alt="linkedIn" className='inline-block m-2 rounded-full' />
-                    <img src="/social/whatsapp.png" width={65} alt="whAtsapp" className='inline-block m-2 rounded-full' />
-                    <img src="/social/tiktok.jpg" width={65} alt="Tiktok" className='inline-block m-2 rounded-full' />
-                    <img src="/social/youtube.jpg" width={65} alt="Youtube" className='inline-block m-2 rounded-full' />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-
       {/* Footer */}
-      <section className="relative py-12 lg:py-12 bg-orange-50 overflow-hidden">
-        <div className="container px-4 mx-auto relative">
-          <div className="flex flex-wrap -mb-3 justify-between">
-            <div className="flex items-center mb-3">
-              <a href="#!" className="inline-block mr-4 text-black hover:blue-950">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="">
-                  <g clipPath="url(#clip0_230_4832)">
-                    <path d="M11.5481 19.9999V10.8776H14.6088L15.068 7.32147H11.5481V5.05138C11.5481 4.02211 11.8327 3.32067 13.3104 3.32067L15.1919 3.3199V0.139138C14.8665 0.0968538 13.7496 -9.15527e-05 12.4496 -9.15527e-05C9.735 -9.15527e-05 7.87654 1.65687 7.87654 4.69918V7.32147H4.80652V10.8776H7.87654V19.9999H11.5481Z" fill="currentColor"/>
-                  </g>
-                </svg>
-              </a>
-              
-              <a href="#!" className="inline-block mr-4 text-black hover:blue-950">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="">
-                  <path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2C22 17.7383 21.3889 19.2135 20.3012 20.3012C19.2135 21.3889 17.7383 22 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8C2 6.26174 2.61107 4.78649 3.69878 3.69878C4.78649 2.61107 6.26174 2 7.8 2ZM7.6 4C6.64522 4 5.72955 4.37928 5.05442 5.05442C4.37928 5.72955 4 6.64522 4 7.6V16.4C4 18.39 5.61 20 7.6 20H16.4C17.3548 20 18.2705 19.6207 18.9456 18.9456C19.6207 18.2705 20 17.3548 20 16.4V7.6C20 5.61 18.39 4 16.4 4H7.6ZM17.25 5.5C17.5815 5.5 17.8995 5.6317 18.1339 5.86612C18.3683 6.10054 18.5 6.41848 18.5 6.75C18.5 7.08152 18.3683 7.39946 18.1339 7.63388C17.8995 7.8683 17.5815 8 17.25 8C16.9185 8 16.6005 7.8683 16.3661 7.63388C16.1317 7.39946 16 7.08152 16 6.75C16 6.41848 16.1317 6.10054 16.3661 5.86612C16.6005 5.6317 16.9185 5.5 17.25 5.5ZM12 7C13.3261 7 14.5979 7.52678 15.5355 8.46447C16.4732 9.40215 17 10.6739 17 12C17 13.3261 16.4732 14.5979 15.5355 15.5355C14.5979 16.4732 13.3261 17 12 17C10.6739 17 9.40215 16.4732 8.46447 15.5355C7.52678 14.5979 7 13.3261 7 12C7 10.6739 7.52678 9.40215 8.46447 8.46447C9.40215 7.52678 10.6739 7 12 7ZM12 9C11.2044 9 10.4413 9.31607 9.87868 9.87868C9.31607 10.4413 9 11.2044 9 12C9 12.7956 9.31607 13.5587 9.87868 14.1213C10.4413 14.6839 11.2044 15 12 15C12.7956 15 13.5587 14.6839 14.1213 14.1213C14.6839 13.5587 15 12.7956 15 12C15 11.2044 14.6839 10.4413 14.1213 9.87868C13.5587 9.31607 12.7956 9 12 9Z" fill="currentColor"/>
-                </svg>
-              </a>
-              
-              <a href="#!" className="inline-block text-black hover:blue-950">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="">
-                  <path d="M19 3C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19ZM18.5 18.5V13.2C18.5 12.3354 18.1565 11.5062 17.5452 10.8948C16.9338 10.2835 16.1046 9.94 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17C14.6813 12.17 15.0374 12.3175 15.2999 12.5801C15.5625 12.8426 15.71 13.1987 15.71 13.57V18.5H18.5ZM6.88 8.56C7.32556 8.56 7.75288 8.383 8.06794 8.06794C8.383 7.75288 8.56 7.32556 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19C6.43178 5.19 6.00193 5.36805 5.68499 5.68499C5.36805 6.00193 5.19 6.43178 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56ZM8.27 18.5V10.13H5.5V18.5H8.27Z" fill="currentColor"/>
-                </svg>
-              </a>
-            </div>
-            
-            <div className="text-center">
-              Créé par{' '}
-              <a className="inline-block text-gray-600 hover:blue-950 font-medium" href="https://www.ghennysoft.com" target="_blank" rel="noopener noreferrer">
-                GhennySoft
-              </a>
-              {/* {' '}• Distributed by{' '}
-              <a className="inline-block text-gray-600 hover:blue-950 font-medium" href="https://www.ThemeWagon.store" target="_blank" rel="noopener noreferrer">
-                ThemeWagon
-              </a> */}
-            </div>
-            
-            <p className="text-sm text-gray-500 mb-3">© {new Date().getFullYear()} La carte Boss. Tout droits reservé.</p>
-          </div>
-        </div>
-      </section>
+      <Footer />
     </div>
   );
 };
