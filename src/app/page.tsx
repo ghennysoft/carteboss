@@ -31,80 +31,72 @@ export default function Home() {
   }, []);
 
   // Composant Accordion pour la FAQ
-  // const Accordion = ({ title, children }) => {
-  //   const [isOpen, setIsOpen] = useState(false);
-    
-  //   return (
-  //     <button 
-  //       onClick={() => setIsOpen(!isOpen)}
-  //       className="flex w-full py-6 px-8 mb-4 items-start justify-between text-left shadow-md rounded-2xl"
-  //     >
-  //       <div>
-  //         <div className="pr-5">
-  //           <h5 className="text-lg font-medium">{title}</h5>
-  //         </div>
-  //         <div 
-  //           className={`overflow-hidden pr-5 duration-500 ${isOpen ? 'h-auto mt-4' : 'h-0'}`}
-  //         >
-  //           <p className="text-gray-700">{children}</p>
-  //         </div>
-  //       </div>
-  //       <span className="shrink-0">
-  //         {!isOpen ? (
-  //           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="">
-  //             <path d="M12 5.69995V18.3" stroke="#1D1F1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-  //             <path d="M5.69995 12H18.3" stroke="#1D1F1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-  //           </svg>
-  //         ) : (
-  //           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="">
-  //             <path d="M5.69995 12H18.3" stroke="#1D1F1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-  //           </svg>
-  //         )}
-  //       </span>
-  //     </button>
-  //   );
-  // };
+  const Accordion = ({ title, children }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex w-full py-6 px-8 mb-4 items-start justify-between text-left shadow-md rounded-2xl"
+      >
+        <div>
+          <div className="pr-5">
+            <h5 className="text-lg font-medium">{title}</h5>
+          </div>
+          <div 
+            className={`overflow-hidden pr-5 duration-500 ${isOpen ? 'h-auto mt-4' : 'h-0'}`}
+          >
+            <p className="text-gray-700">{children}</p>
+          </div>
+        </div>
+        <span className="shrink-0">
+          {!isOpen ? (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="">
+              <path d="M12 5.69995V18.3" stroke="#1D1F1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M5.69995 12H18.3" stroke="#1D1F1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          ) : (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="">
+              <path d="M5.69995 12H18.3" stroke="#1D1F1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          )}
+        </span>
+      </button>
+    );
+  };
 
   return (
     <div className="antialiased bg-body text-body font-body">
-      {/* Banner */}
-      {/* <div>
-        <p className="mb-0 py-3 bg-lime-500 text-center">
-          Jeu 04 decembre 2025, 08H00
-        </p>
-      </div> */}
-
       {/* Header */}
-      <section className="relative bg-teal-900">
-        <img className="absolute top-0 left-0 right-0 bottom-0 object-cover w-full h-full" src="/fauna-assets/headers/bg2.jpg" alt="" />
+      <section className="relative">
+        {/* <img className="absolute top-0 left-0 right-0 bottom-0 object-cover w-full h-full" src="/fauna-assets/headers/bg2.jpg" alt="" /> */}
         <nav className="py-6">
           <div className="container mx-auto px-4">
             <div className="relative flex items-center justify-between">
               <Link href="/" className="inline-block">
-                <Image src="/logo.png" width={120} height={80} alt="Logo" />
+                <Image src="/logo2.png" width={120} height={80} alt="Logo" />
               </Link>
               
               <ul className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden md:flex">
                 <li className="mr-8">
-                  <Link className="inline-block text-white hover:blue-950 font-medium" href="/">Accueil</Link>
+                  <Link className="inline-block hover:blue-950 font-medium" href="/">Accueil</Link>
                 </li>
                 <li className="mr-8">
-                  <a className="inline-block text-white hover:blue-950 font-medium" href="">A propos</a>
+                  <a className="inline-block hover:blue-950 font-medium" href="">A propos</a>
                 </li>
                 {/* <li className="mr-8">
-                  <a className="inline-block text-white hover:blue-950 font-medium" href="pricing.html">Prix</a>
+                  <a className="inline-block hover:blue-950 font-medium" href="pricing.html">Prix</a>
                 </li> */}
                 <li className="mr-8">
-                  <a className="inline-block text-white hover:blue-950 font-medium" href="">Nous contacter</a>
+                  <a className="inline-block hover:blue-950 font-medium" href="">Nous contacter</a>
                 </li>
                 {/* <li>
-                  <a className="inline-block text-white hover:blue-950 font-medium" href="blog.html">Blog</a>
+                  <a className="inline-block hover:blue-950 font-medium" href="blog.html">Blog</a>
                 </li> */}
               </ul>
 
               <div className="flex items-center justify-end">
                 <div className="hidden md:block">
-                  <a href="contact.html" className="inline-flex group py-2.5 px-4 items-center justify-center text-sm font-medium text-white hover:text-teal-900 border border-white hover:bg-white rounded-full transition duration-200">
+                  <a href="contact.html" className="inline-flex group py-2.5 px-4 items-center justify-center text-sm font-medium  hover:text-blue-950 border hover:bg-blue-950 rounded-full transition duration-200">
                     <span className="mr-2">Souscrire</span>
                     <span className="transform group-hover:translate-x-0.5 transition-transform duration-200">
                       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="">
@@ -117,7 +109,7 @@ export default function Home() {
                 
                 <button 
                   onClick={() => setMobileNavOpen(!mobileNavOpen)}
-                  className="md:hidden text-white"
+                  className="md:hidden"
                 >
                   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="">
                     <path d="M5.19995 23.2H26.7999" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -130,19 +122,20 @@ export default function Home() {
           </div>
         </nav>
 
-        <div className="relative pt-18 pb-24 sm:pb-32 lg:pt-36 lg:pb-62">
-          <div className="container mx-auto px-4 relative">
-            <div className="max-w-lg xl:max-w-xl mx-auto text-center">
-              <h1 className="font-heading text-5xl xs:text-7xl xl:text-8xl tracking-tight text-white mb-8">
-                Votre réseau en un scan
+        <div className="relative pt-10 md:pt-14">
+          <div className="container mx-auto px-4 relative grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="max-w-lg xl:max-w-xl mx-auto text-center lg:text-left">
+              <h1 className="font-heading text-5xl font-bold xs:text-7xl xl:text-7xl text-blue-950 tracking-tight mb-8">
+                Soyez professionnel avec une carte de visite numérique
               </h1>
-              <p className="max-w-md xl:max-w-none text-lg text-white opacity-80 mb-10">
+              <p className="max-w-md xl:max-w-none text-lg opacity-80 mb-10">
                 Partagez vos informations professionnelles instantanément avec un simple code QR. Moderne, écologique et toujours à jour. 
               </p>
               {/* <a href="#!" className="inline-flex py-4 px-6 items-center justify-center text-lg font-medium text-teal-900 border border-lime-500 hover:border-white bg-lime-500 hover:bg-white rounded-full transition duration-200">
                 See our solutions
               </a> */}
             </div>
+            <img src="/img-banner.png" className='w-full lg:-mt-10' alt="banner img" />
           </div>
         </div>
 
@@ -223,26 +216,26 @@ export default function Home() {
       {/* Stats Section */}
       <section className="py-12 lg:py-24">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap -mx-4">
-            <div className="w-full sm:w-1/2 md:w-1/4 px-4 mb-10 md:mb-0">
+          <div className="grid grid-cols-2 md:grid-cols-4 -mx-4 gap-5">
+            <div className="w-full px-4 font-semibold mb-10 md:mb-0">
               <div className="text-center">
                 <h5 className="text-2xl xs:text-3xl lg:text-4xl xl:text-5xl mb-4">500+</h5>
                 <span className="text-base lg:text-lg text-gray-700">Utilisateurs</span>
               </div>
             </div>
-            <div className="w-full sm:w-1/2 md:w-1/4 px-4 mb-10 sm:mb-0">
+            <div className="w-full px-4 font-semibold mb-10 sm:mb-0">
               <div className="text-center">
                 <h5 className="text-2xl xs:text-3xl lg:text-4xl xl:text-5xl mb-4">800+</h5>
                 <span className="text-base lg:text-lg text-gray-700">Cartes business partagées</span>
               </div>
             </div>
-            <div className="w-full sm:w-1/2 md:w-1/4 px-4 mb-10 md:mb-0">
+            <div className="w-full px-4 font-semibold mb-10 md:mb-0">
               <div className="text-center">
                 <h5 className="text-2xl xs:text-3xl lg:text-4xl xl:text-5xl mb-4">1,500+</h5>
                 <span className="text-base lg:text-lg text-gray-700">Clients heureux</span>
               </div>
             </div>
-            <div className="w-full sm:w-1/2 md:w-1/4 px-4">
+            <div className="w-full px-4 font-semibold">
               <div className="text-center">
                 <h5 className="text-2xl xs:text-3xl lg:text-4xl xl:text-5xl mb-4">15%</h5>
                 <span className="text-base lg:text-lg text-gray-700">Reduction Carbone</span>
@@ -253,25 +246,15 @@ export default function Home() {
       </section>
 
       {/* Solutions Section */}
-      <section className="p-4 bg-white">
-        {/* <div className="pt-16 pb-24 px-5 xs:px-8 xl:px-12 bg-blue-950 rounded-3xl" style={{backgroundImage: "url(/fauna-assets/headers/bg3.jpg)", backgroundSize: "cover"}}> */}
-        <div className="pt-16 pb-24 px-5 xs:px-8 xl:px-12 bg-blue-950 rounded-3xl">
+      <section className="p-4 pb-10 bg-white">
+        <div className="lg:pt-16 lg:pb-24 lg:px-5 xs:px-8 xl:px-12 rounded-3xl">
           <div className="container mx-auto px-4">
-            <div className="flex mb-4 items-center">
-              <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="">
-                <circle cx="4" cy="4" r="4" fill="#022C22"/>
-              </svg>
-              <span className="inline-block ml-2 text-sm font-medium text-white">Une carte de visite digitale qui vous donne un avantage professionnel décisif</span>
-            </div>
-            <div className="border-t border-teal-900 border-opacity-25 pt-14">
-              <img src="/phone_qr.png" className='mx-auto' alt="qr code" style={{borderRadius: '80px'}} />
-              
-              <h1 className="font-heading text-4xl sm:text-6xl mb-24 text-white text-center mt-10">Pourquoi s&apos;en procurer ?</h1>
-              
+            <div className="">
+              <h1 className="font-heading text-4xl sm:text-6xl mb-24 text-center mt-10">Pourquoi s&apos;en procurer ?</h1>
               <div className="flex flex-wrap -mx-4">
                 {/* EV Charging */}
-                <div className="w-full sm:w-1/2 px-4 mb-16">
-                  <div>
+                <div className="w-full sm:w-1/2 px-4 mb-16 text-center">
+                  <div className='flex flex-col items-center bg-amber-100 p-10 rounded-xl'>
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="">
                       <path d="M0 8C0 3.58172 3.58172 0 8 0H40C44.4183 0 48 3.58172 48 8V40C48 44.4183 44.4183 48 40 48H8C3.58172 48 0 44.4183 0 40V8Z" fill="white"/>
                       <circle cx="16" cy="16" r="4" fill="#022C22"/>
@@ -279,16 +262,16 @@ export default function Home() {
                       <circle cx="32" cy="16" r="4" fill="#022C22"/>
                     </svg>
                     <div className="mt-6">
-                      <h5 className="text-2xl font-medium mb-3 text-white">Partage instantané</h5>
-                      <p className="mb-6 text-white">Un simple scan et toutes vos informations sont partagées en une seconde. Plus besoin de chercher vos cartes papier.</p>
-                      {/* <a href="#!" className="inline-block text-lg font-medium hover:text-teal-700 text-white">Read more</a> */}
+                      <h5 className="text-2xl font-medium mb-3">Partage instantané</h5>
+                      <p className="mb-6">Un simple scan et toutes vos informations sont partagées en une seconde. Plus besoin de chercher vos cartes papier.</p>
+                      {/* <a href="#!" className="inline-block text-lg font-medium hover:text-teal-700">Read more</a> */}
                     </div>
                   </div>
                 </div>
 
                 {/* Solar Energy */}
-                <div className="w-full sm:w-1/2 px-4 mb-16">
-                  <div>
+                <div className="w-full sm:w-1/2 px-4 mb-16 text-center">
+                  <div className='flex flex-col items-center bg-fuchsia-100 p-10 rounded-xl'>
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="">
                       <path d="M0 8C0 3.58172 3.58172 0 8 0H40C44.4183 0 48 3.58172 48 8V40C48 44.4183 44.4183 48 40 48H8C3.58172 48 0 44.4183 0 40V8Z" fill="white"/>
                       <rect x="23" y="8" width="2" height="12" rx="1" fill="#022C22"/>
@@ -301,16 +284,16 @@ export default function Home() {
                       <rect x="11.9792" y="13.3934" width="2" height="12" rx="1" transform="rotate(-45 11.9792 13.3934)" fill="#022C22"/>
                     </svg>
                     <div className="mt-6">
-                      <h5 className="text-2xl font-medium mb-3 text-white">Toujours à jour</h5>
-                      <p className="mb-6 text-white">Modifiez vos informations à tout moment. Tous ceux qui ont votre carte verront automatiquement les mises à jour.</p>
-                      {/* <a href="#!" className="inline-block text-lg font-medium hover:text-teal-700 text-white">Read more</a> */}
+                      <h5 className="text-2xl font-medium mb-3">Toujours à jour</h5>
+                      <p className="mb-6">Modifiez vos informations à tout moment. Tous ceux qui ont votre carte verront automatiquement les mises à jour.</p>
+                      {/* <a href="#!" className="inline-block text-lg font-medium hover:text-teal-700">Read more</a> */}
                     </div>
                   </div>
                 </div>
 
                 {/* Wind Energy */}
-                <div className="w-full sm:w-1/2 px-4 mb-16 sm:mb-0">
-                  <div>
+                <div className="w-full sm:w-1/2 px-4 mb-16 sm:mb-0 text-center">
+                  <div className='flex flex-col items-center bg-gray-200 p-10 rounded-xl'>
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="">
                       <path d="M0 8C0 3.58172 3.58172 0 8 0H40C44.4183 0 48 3.58172 48 8V40C48 44.4183 44.4183 48 40 48H8C3.58172 48 0 44.4183 0 40V8Z" fill="white"/>
                       <path d="M25 24C25 24.5523 24.5523 25 24 25C23.4477 25 23 24.5523 23 24C23 23.4477 23.4477 23 24 23C24.5523 23 25 23.4477 25 24Z" fill="#022C22"/>
@@ -323,24 +306,24 @@ export default function Home() {
                       <path fillRule="evenodd" clipRule="evenodd" d="M24 17C20.134 17 17 20.134 17 24C17 24.5523 16.5523 25 16 25C15.4477 25 15 24.5523 15 24C15 19.0294 19.0294 15 24 15C24.5523 15 25 15.4477 25 16C25 16.5523 24.5523 17 24 17Z" fill="#022C22"/>
                     </svg>
                     <div className="mt-6">
-                      <h5 className="text-2xl font-medium mb-3 text-white">Sécurisé et privé</h5>
-                      <p className="mb-6 text-white">Vos données sont protégées et vous contrôlez exactement ce que vous partagez avec chaque contact.</p>
-                      {/* <a href="#!" className="inline-block text-lg font-medium hover:text-teal-700 text-white">Read more</a> */}
+                      <h5 className="text-2xl font-medium mb-3">Sécurisé et privé</h5>
+                      <p className="mb-6">Vos données sont protégées et vous contrôlez exactement ce que vous partagez avec chaque contact.</p>
+                      {/* <a href="#!" className="inline-block text-lg font-medium hover:text-teal-700">Read more</a> */}
                     </div>
                   </div>
                 </div>
 
                 {/* Hydropower */}
-                <div className="w-full sm:w-1/2 px-4">
-                  <div>
+                <div className="w-full sm:w-1/2 px-4 text-center">
+                  <div className='flex flex-col items-center bg-green-100 p-10 rounded-xl'>
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="">
                       <path d="M0 8C0 3.58172 3.58172 0 8 0H40C44.4183 0 48 3.58172 48 8V40C48 44.4183 44.4183 48 40 48H8C3.58172 48 0 44.4183 0 40V8Z" fill="white"/>
                       <path d="M23.8425 12.3779C23.9008 12.238 24.0992 12.238 24.1575 12.3779L30.1538 26.7692C31.9835 31.1605 28.7572 36 24 36Lnan nanL24 36C19.2428 36 16.0165 31.1605 17.8462 26.7692L23.8425 12.3779Z" fill="#022C22"/>
                     </svg>
                     <div className="mt-6">
-                      <h5 className="text-2xl font-medium mb-3 text-white">Écologique</h5>
-                      <p className="mb-6 text-white">Zéro papier, zéro déchet. Une solution moderne et responsable pour votre networking professionnel.</p>
-                      {/* <a href="#!" className="inline-block text-lg font-medium hover:text-teal-700 text-white">Read more</a> */}
+                      <h5 className="text-2xl font-medium mb-3">Écologique</h5>
+                      <p className="mb-6">Zéro papier, zéro déchet. Une solution moderne et responsable pour votre networking professionnel.</p>
+                      {/* <a href="#!" className="inline-block text-lg font-medium hover:text-teal-700">Read more</a> */}
                     </div>
                   </div>
                 </div>
@@ -363,12 +346,9 @@ export default function Home() {
           </div>
           
           <div className="flex justify-center overflow-x-hidden">
-            <div className="w-2/3 lg:w-1/4 px-2 md:px-4">
-              <img className="block w-full h-full object-cover rounded-sm border border-gray-300" src="/medi.png" alt="About Flora&Fauna" />
+            <div className="w-full lg:w-2/3 px-2 md:px-4">
+              <img className="block w-full h-full object-cover rounded-sm" src="/follow-us.webp" alt="Follow" />
             </div>
-            {/* <div className="shrink-0 h-full max-w-xs sm:max-w-md md:max-w-xl mr-4 sm:mr-8">
-              <Image className="block w-full" src="/fauna-assets/about/about-image3.png" width={60} height={60} alt="Solar panels"/>
-            </div> */}
           </div>
         </div>
       </section>
@@ -506,7 +486,7 @@ export default function Home() {
       <div>
         <section>
           <div className="p-4">
-            <div className="max-w-xl lg:max-w-5xl mx-auto xl:max-w-none px-5 md:px-12 xl:px-24 py-16 bg-blue-950 rounded-2xl">
+            <div className="lg:max-w-5xl mx-auto xl:max-w-none px-5 md:px-12 xl:px-24 py-16 bg-orange-300 rounded-2xl">
               <div className="container mx-auto px-4">
                 <div className="flex flex-wrap items-center -mx-4">
                   <div className="w-full lg:w-2/3 px-4 mb-8 lg:mb-0">
@@ -537,66 +517,8 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <section className="relative py-12 lg:py-24 bg-orange-50 overflow-hidden">
-        <Image className="absolute bottom-0 left-0" src="/fauna-assets/footer/waves-lines-left-bottom.png" width={60} height={60} alt=""/>
+      <section className="relative py-12 lg:py-12 bg-orange-50 overflow-hidden">
         <div className="container px-4 mx-auto relative">
-          <div className="flex flex-wrap mb-16 -mx-4">
-            <div className="w-full lg:w-2/12 xl:w-2/12 px-4 mb-16 lg:mb-0">
-              <a className="inline-block mb-4" href="#!">
-                <Image src="/logo.png" width={120} height={80} alt="Logo" />
-              </a>
-            </div>
-            
-            <div className="w-full md:w-7/12 lg:w-6/12 px-4 mb-16 lg:mb-0">
-              <div className="flex flex-wrap -mx-4">
-                <div className="w-1/2 xs:w-1/3 px-4 mb-8 xs:mb-0">
-                  <h3 className="mb-6 font-bold">Platform</h3>
-                  <ul>
-                    <li className="mb-4">
-                      <a className="inline-block text-gray-600 hover:to-blue-950 font-medium" href="#!">Solutions</a>
-                    </li>
-                    <li className="mb-4">
-                      <a className="inline-block text-gray-600 hover:to-blue-950 font-medium" href="#!">Comment ça marche</a>
-                    </li>
-                    <li>
-                      <a className="inline-block text-gray-600 hover:to-blue-950 font-medium" href="#!">Prix</a>
-                    </li>
-                  </ul>
-                </div>
-                
-                <div className="w-1/2 xs:w-1/3 px-4 mb-8 xs:mb-0">
-                  <h3 className="mb-6 font-bold">Entreprise</h3>
-                  <ul>
-                    <li className="mb-4">
-                      <a className="inline-block text-gray-600 hover:blue-950 font-medium" href="#!">A propos</a>
-                    </li>
-                    <li className="mb-4">
-                      <a className="inline-block text-gray-600 hover:blue-950 font-medium" href="#!">Notre mission</a>
-                    </li>
-                    <li>
-                      <a className="inline-block text-gray-600 hover:blue-950 font-medium" href="#!">Contact</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            
-            <div className="w-full md:w-5/12 lg:w-4/12 px-4">
-              <div className="max-w-sm p-8 bg-blue-950 rounded-2xl mx-auto md:mr-0">
-                <h5 className="text-xl font-medium text-white mb-4">Your Source for Green Energy Updates</h5>
-                <p className="text-sm text-white opacity-80 leading-normal mb-10">
-                  Restez en actualité sur toutes les mises à jours et nouvelles solutions.
-                </p>
-                <div className="flex flex-col">
-                  <input type="email" className="h-12 w-full px-4 py-1 placeholder-gray-600 text-gray-200 outline-none ring-offset-0 focus:ring-2 focus:blue-950 shadow rounded-full" placeholder="Your e-mail..."/>
-                  <a href="#!" className="h-12 inline-flex mt-3 py-1 px-5 items-center justify-center font-medium text-blue-950 border border-white bg-white rounded-full transition duration-200">
-                    Envoyer
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
           <div className="flex flex-wrap -mb-3 justify-between">
             <div className="flex items-center mb-3">
               <a href="#!" className="inline-block mr-4 text-black hover:blue-950">
