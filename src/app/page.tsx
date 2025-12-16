@@ -65,11 +65,12 @@ export default function Home() {
         <div className="container mx-auto px-4 relative grid grid-cols-1 md:grid-cols-2 gap-3">
           <div className="max-w-lg xl:max-w-xl mx-auto text-center lg:text-left">
             <h1 className="font-heading text-5xl font-bold xs:text-7xl xl:text-7xl text-blue-950 tracking-tight mb-8">
-              Soyez professionnel avec une carte de visite numérique
+              Soyez professionnel avec une carte de visite numérique de haute qualité
             </h1>
             <p className="max-w-md xl:max-w-none text-lg opacity-80 mb-10">
-              Partagez vos informations professionnelles instantanément avec un simple code QR. Moderne, écologique et toujours à jour. 
+              Partagez vos informations professionnelles instantanément grâce à une solution moderne, élégante et performante.
             </p>
+            <strong>Rapide. Sécurisée. Toujours à jour.</strong>
             {/* <a href="#!" className="inline-flex py-4 px-6 items-center justify-center text-lg font-medium text-teal-900 border border-lime-500 hover:border-white bg-lime-500 hover:bg-white rounded-full transition duration-200">
               See our solutions
             </a> */}
@@ -85,25 +86,25 @@ export default function Home() {
             <div className="w-full px-4 font-semibold mb-10 md:mb-0">
               <div className="text-center">
                 <h5 className="text-2xl xs:text-3xl lg:text-4xl xl:text-5xl mb-4">500+</h5>
-                <span className="text-base lg:text-lg text-gray-700">Utilisateurs</span>
+                <span className="text-base lg:text-lg text-gray-700">Utilisateurs actifs</span>
               </div>
             </div>
             <div className="w-full px-4 font-semibold mb-10 sm:mb-0">
               <div className="text-center">
                 <h5 className="text-2xl xs:text-3xl lg:text-4xl xl:text-5xl mb-4">800+</h5>
-                <span className="text-base lg:text-lg text-gray-700">Cartes business partagées</span>
+                <span className="text-base lg:text-lg text-gray-700">Cartes professionnelles partagées</span>
               </div>
             </div>
             <div className="w-full px-4 font-semibold mb-10 md:mb-0">
               <div className="text-center">
                 <h5 className="text-2xl xs:text-3xl lg:text-4xl xl:text-5xl mb-4">1,500+</h5>
-                <span className="text-base lg:text-lg text-gray-700">Clients heureux</span>
+                <span className="text-base lg:text-lg text-gray-700">Clients satisfaits</span>
               </div>
             </div>
             <div className="w-full px-4 font-semibold">
               <div className="text-center">
                 <h5 className="text-2xl xs:text-3xl lg:text-4xl xl:text-5xl mb-4">15%</h5>
-                <span className="text-base lg:text-lg text-gray-700">Reduction Carbone</span>
+                <span className="text-base lg:text-lg text-gray-700">Réduction de l’empreinte carbone</span>
               </div>
             </div>
           </div>
@@ -118,7 +119,7 @@ export default function Home() {
               <h1 className="font-heading text-4xl sm:text-6xl mb-24 text-center mt-10">Pourquoi s&apos;en procurer ?</h1>
               <div className="flex flex-wrap -mx-4">
                 {/* EV Charging */}
-                <div className="w-full sm:w-1/2 px-4 mb-16 text-center">
+                <div className="w-full sm:w-1/2 px-4 mb-8 md:mb-12 text-center">
                   <div className='flex flex-col items-center bg-amber-100 p-10 rounded-xl'>
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="">
                       <path d="M0 8C0 3.58172 3.58172 0 8 0H40C44.4183 0 48 3.58172 48 8V40C48 44.4183 44.4183 48 40 48H8C3.58172 48 0 44.4183 0 40V8Z" fill="white"/>
@@ -128,14 +129,14 @@ export default function Home() {
                     </svg>
                     <div className="mt-6">
                       <h5 className="text-2xl font-medium mb-3">Partage instantané</h5>
-                      <p className="mb-6">Un simple scan et toutes vos informations sont partagées en une seconde. Plus besoin de chercher vos cartes papier.</p>
+                      <p className="mb-6">Un simple scan ou un tap suffit pour transmettre toutes vos informations professionnelles en une seconde. Fini les cartes papier perdues ou oubliées.</p>
                       {/* <a href="#!" className="inline-block text-lg font-medium hover:text-teal-700">Read more</a> */}
                     </div>
                   </div>
                 </div>
 
                 {/* Solar Energy */}
-                <div className="w-full sm:w-1/2 px-4 mb-16 text-center">
+                <div className="w-full sm:w-1/2 px-4 mb-8 md:mb-12 text-center">
                   <div className='flex flex-col items-center bg-fuchsia-100 p-10 rounded-xl'>
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="">
                       <path d="M0 8C0 3.58172 3.58172 0 8 0H40C44.4183 0 48 3.58172 48 8V40C48 44.4183 44.4183 48 40 48H8C3.58172 48 0 44.4183 0 40V8Z" fill="white"/>
@@ -150,14 +151,14 @@ export default function Home() {
                     </svg>
                     <div className="mt-6">
                       <h5 className="text-2xl font-medium mb-3">Toujours à jour</h5>
-                      <p className="mb-6">Modifiez vos informations à tout moment. Tous ceux qui ont votre carte verront automatiquement les mises à jour.</p>
+                      <p className="mb-6">Vos informations évoluent avec vous. Chaque mise à jour est immédiatement visible par l’ensemble de vos contacts.</p>
                       {/* <a href="#!" className="inline-block text-lg font-medium hover:text-teal-700">Read more</a> */}
                     </div>
                   </div>
                 </div>
 
                 {/* Wind Energy */}
-                <div className="w-full sm:w-1/2 px-4 mb-16 sm:mb-0 text-center">
+                <div className="w-full sm:w-1/2 px-4 mb-8 md:mb-12 sm:mb-0 text-center">
                   <div className='flex flex-col items-center bg-gray-200 p-10 rounded-xl'>
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="">
                       <path d="M0 8C0 3.58172 3.58172 0 8 0H40C44.4183 0 48 3.58172 48 8V40C48 44.4183 44.4183 48 40 48H8C3.58172 48 0 44.4183 0 40V8Z" fill="white"/>
@@ -172,7 +173,7 @@ export default function Home() {
                     </svg>
                     <div className="mt-6">
                       <h5 className="text-2xl font-medium mb-3">Sécurisé et privé</h5>
-                      <p className="mb-6">Vos données sont protégées et vous contrôlez exactement ce que vous partagez avec chaque contact.</p>
+                      <p className="mb-6">Vos données sont protégées avec rigueur. Vous conservez un contrôle total sur les informations que vous choisissez de partager.</p>
                       {/* <a href="#!" className="inline-block text-lg font-medium hover:text-teal-700">Read more</a> */}
                     </div>
                   </div>
@@ -187,7 +188,7 @@ export default function Home() {
                     </svg>
                     <div className="mt-6">
                       <h5 className="text-2xl font-medium mb-3">Écologique</h5>
-                      <p className="mb-6">Zéro papier, zéro déchet. Une solution moderne et responsable pour votre networking professionnel.</p>
+                      <p className="mb-6">Zéro papier. Zéro gaspillage. Une solution durable et responsable pour un networking moderne et conscient.</p>
                       {/* <a href="#!" className="inline-block text-lg font-medium hover:text-teal-700">Read more</a> */}
                     </div>
                   </div>
@@ -205,6 +206,7 @@ export default function Home() {
             <h1 className="font-heading text-4xl sm:text-6xl md:text-7xl tracking-sm mb-16">
               Faites comme les autres, procurez-vous déjà votre carte
             </h1>
+            <p>Procurez-vous dès aujourd’hui votre carte de visite numérique.</p>
             {/* <a href="#!" className="inline-flex py-4 px-6 items-center justify-center text-lg font-medium text-white hover:text-teal-900 border border-teal-900 hover:border-lime-500 bg-teal-900 hover:bg-lime-500 rounded-full transition duration-200">
               Souscrire
             </a> */}
@@ -228,19 +230,24 @@ export default function Home() {
           
           <div className="max-w-4xl mx-auto">
             <Accordion title="Qui sommes-nous ?">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Est natus molestias illo adipisci dolorum quae culpa voluptatum ipsum odio quasi error officiis ab hic, sit nesciunt modi saepe dolorem animi.
+              BOSS.SARL est une entreprise spécialisée dans les solutions digitales professionnelles.
+              Nous accompagnons les professionnels et les entreprises dans la modernisation de leur image
+              et de leur réseau.
             </Accordion>
             
             <Accordion title="Comment souscrire ?">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Est natus molestias illo adipisci dolorum quae culpa voluptatum ipsum odio quasi error officiis ab hic, sit nesciunt modi saepe dolorem animi.
+              La souscription peut se faire directement en ligne ou via un agent BOSS agréé.
             </Accordion>
             
             <Accordion title="Combien de temps dure la souscription ?">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Est natus molestias illo adipisci dolorum quae culpa voluptatum ipsum odio quasi error officiis ab hic, sit nesciunt modi saepe dolorem animi.
+              Votre carte reste active tant que votre abonnement est valide, avec un accès continu à vos
+              informations.  
             </Accordion>
             
             <Accordion title="Comment mettre à jour mes informations ?">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Est natus molestias illo adipisci dolorum quae culpa voluptatum ipsum odio quasi error officiis ab hic, sit nesciunt modi saepe dolorem animi.
+              Il vous suffit de contacter notre service client.
+              Un simple appel permet à notre équipe de procéder immédiatement à la mise à jour de vos
+              informations.
             </Accordion>
             
             <div className="sm:flex py-10 px-5 sm:px-10 bg-orange-50 rounded-2xl">
@@ -256,11 +263,12 @@ export default function Home() {
               <div>
                 <h5 className="text-xl font-medium mb-4">Vous avez toujours des questions ?</h5>
                 <p className="text-gray-700">
-                  <span>Pour assistance, allez sur la page </span>
+                  Notre service client est disponible 24h/24 et 7j/7 pour vous accompagner.
+                  {/* <span>Pour assistance, allez sur la page </span>
                   <a href="/contact" className="inline-block text-black font-medium underline">Nous contacter</a>
                   <span> ou appellez notre service client au </span>
                   <span className="text-black font-medium">(243) xxx xxx xxx.</span>
-                  <span> Notre équipe est prêt à vous accompagner.</span>
+                  <span> Notre équipe est prêt à vous accompagner.</span> */}
                 </p>
               </div>
             </div>
