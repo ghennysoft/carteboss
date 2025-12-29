@@ -180,7 +180,6 @@ const Register = () => {
                             <div>
                                 <div className="relative mt-2 block mb-5 bg-gray-300 py-3 px-4 rounded-full focus:outline-0">
                                     <select 
-                                        name="gender" id="gender" 
                                         {...register("gender")}
                                         defaultValue={""}
                                         className="block w-full focus:outline-0 bg-transparent"
