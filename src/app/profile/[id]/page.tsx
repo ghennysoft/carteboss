@@ -67,7 +67,7 @@ const Profile = () => {
       </section>
 
       {user?.role == "admin" || user?.role == "agent" && <div className='text-center pb-10'>
-        <a target='_blank' href={`https://carteboss-crm.vercel.app?token=${token}&refresh=${refresh}&user=${currentUser}`} className="inline-flex group py-2.5 px-4 items-center justify-center text-sm font-medium  hover:text-white border hover:bg-blue-950 rounded-full transition duration-200">
+        <a target='_blank' href={`${process.env.NEXT_PUBLIC_CLIENT_URL}?token=${token}&refresh=${refresh}&user=${currentUser}`} className="inline-flex group py-2.5 px-4 items-center justify-center text-sm font-medium  hover:text-white border hover:bg-blue-950 rounded-full transition duration-200">
           Accéder au tableau de bord
         </a>
       </div>}
@@ -89,7 +89,7 @@ const Profile = () => {
           </tr>
           <tr>
             <td>Date de naissance &nbsp;&nbsp;&nbsp;</td>
-            <td>:&nbsp; {new Date(user?.date_of_birth).toLocaleDateString()}</td>
+            <td>:&nbsp; {new Date(user.date_of_birth).toLocaleDateString()}</td>
           </tr>
           <tr>
             <td>Adresse &nbsp;&nbsp;&nbsp;</td>
