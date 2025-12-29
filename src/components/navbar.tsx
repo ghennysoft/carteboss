@@ -4,6 +4,12 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 export default function NavBar() {
+  const token = window.localStorage.getItem('token');
+  let user=null;
+  if(token){
+    user = JSON.parse(window.localStorage.getItem('user') || '');
+  }
+
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   // Fermer le menu mobile quand on clique sur un lien
@@ -49,15 +55,27 @@ export default function NavBar() {
 
               <div className="flex items-center justify-end">
                 <div className="hidden md:block">
-                  <a href="" className="inline-flex group py-2.5 px-4 items-center justify-center text-sm font-medium  hover:text-blue-950 border hover:bg-blue-950 rounded-full transition duration-200">
-                    <span className="mr-2">Souscrire</span>
-                    <span className="transform group-hover:translate-x-0.5 transition-transform duration-200">
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="">
-                        <path d="M4.75 10H15.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M10 4.75L15.25 10L10 15.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </span>
-                  </a>
+                  {
+                    token
+                      ? <a href={`/profile/${user.id}`} className="inline-flex group py-2.5 px-4 items-center justify-center text-sm font-medium  hover:text-white border hover:bg-blue-950 rounded-full transition duration-200">
+                        <span className="mr-2">Profile</span>
+                        <span className="transform group-hover:translate-x-0.5 transition-transform duration-200">
+                          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="">
+                            <path d="M4.75 10H15.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M10 4.75L15.25 10L10 15.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </span>
+                      </a>
+                      : <a href="/register" className="inline-flex group py-2.5 px-4 items-center justify-center text-sm font-medium  hover:text-white border hover:bg-blue-950 rounded-full transition duration-200">
+                        <span className="mr-2">Créer un compte</span>
+                        <span className="transform group-hover:translate-x-0.5 transition-transform duration-200">
+                          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="">
+                            <path d="M4.75 10H15.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M10 4.75L15.25 10L10 15.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </span>
+                      </a>
+                  }
                 </div>
                 
                 <button 
@@ -110,9 +128,16 @@ export default function NavBar() {
                   <a className="inline-block font-medium" href="blog.html">Blog</a>
                 </li> */}
               </ul>
-              <a href="" className="inline-flex py-2.5 px-4 mr-6 items-center justify-center text-sm font-medium text-teal-900 hover:text-white border border-teal-900 hover:bg-teal-900 rounded-full transition duration-200">
-                Souscrire
-              </a>
+              {
+                token
+                  ? <a href={`/profile/${user.id}`} className="inline-flex group py-2.5 px-4 items-center justify-center text-sm font-medium  hover:text-white border hover:bg-blue-950 rounded-full transition duration-200">
+                      Profile
+                    </a>
+                  : <a href="/login" className="inline-flex py-2.5 px-4 mr-6 items-center justify-center text-sm font-medium text-teal-900 hover:text-white border border-teal-900 hover:bg-teal-900 rounded-full transition duration-200">
+                      Créer un compte
+                    </a>
+              }
+              
             </div>
 
             <div className="flex items-center justify-between">
