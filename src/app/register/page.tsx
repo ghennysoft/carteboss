@@ -84,7 +84,8 @@ const Register = () => {
         console.log(submitData);
 
         try {
-            const response = await api.post(BASE_API_URL+"/api/auth/register/", submitData)
+            // const response = await api.post(BASE_API_URL+"/api/auth/register/", submitData)
+            const response = await api.post("https://carteboss-backend.onrender.com/api/auth/register/", submitData)
       
             localStorage.setItem('user', JSON.stringify(response.data.user))
             localStorage.setItem('token', response.data.access)

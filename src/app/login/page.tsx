@@ -43,7 +43,8 @@ const Login = () => {
     setLoading(true)
     setMessage('')
     try {
-      const response = await axios.post(BASE_API_URL+"/api/auth/login/", {
+      // const response = await axios.post(BASE_API_URL+"/api/auth/login/", {
+      const response = await axios.post("https://carteboss-backend.onrender.com/api/auth/login/", {
         email: data.email, 
         password: data.password
       })
