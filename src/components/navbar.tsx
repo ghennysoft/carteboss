@@ -3,8 +3,16 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
+interface UserProps{
+  id: number,
+  first_name: string,
+  last_name: string,
+  email: string,
+  phone: string,
+}
+
 export default function NavBar() {
-  const [user, setUser] = useState<unknown>(null);
+  const [user, setUser] = useState<UserProps>();
   const [token, setToken] = useState<string | null>(null);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
