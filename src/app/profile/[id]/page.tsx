@@ -75,26 +75,28 @@ const Profile = () => {
       {/* About Content Section */}
       <section className="pb-12 lg:pb-24">
         <table className='mx-auto'>
-          <tr>
-            <td>Numéro de téléphone &nbsp;&nbsp;&nbsp;</td>
-            <td>:&nbsp; {user?.phone}</td>
-          </tr>
-          <tr>
-            <td>Genre &nbsp;&nbsp;&nbsp;</td>
-            <td>:&nbsp; {user?.gender === "M" ? "Homme" : "Femme"}</td>
-          </tr>
-          <tr>
-            <td>Email &nbsp;&nbsp;&nbsp;</td>
-            <td>:&nbsp; {user?.email}</td>
-          </tr>
-          <tr>
-            <td>Date de naissance &nbsp;&nbsp;&nbsp;</td>
-            <td>:&nbsp; {new Date(user.date_of_birth).toLocaleDateString()}</td>
-          </tr>
-          <tr>
-            <td>Adresse &nbsp;&nbsp;&nbsp;</td>
-            <td>:&nbsp; {user?.address}</td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>Numéro de téléphone &nbsp;&nbsp;&nbsp;</td>
+              <td>:&nbsp; {user?.phone}</td>
+            </tr>
+            <tr>
+              <td>Genre &nbsp;&nbsp;&nbsp;</td>
+              <td>:&nbsp; {user?.gender === "M" ? "Homme" : "Femme"}</td>
+            </tr>
+            <tr>
+              <td>Email &nbsp;&nbsp;&nbsp;</td>
+              <td>:&nbsp; {user?.email}</td>
+            </tr>
+            {user && <tr>
+              <td>Date de naissance &nbsp;&nbsp;&nbsp;</td>
+              <td>:&nbsp; {new Date(user.date_of_birth).toLocaleDateString()}</td>
+            </tr>}
+            <tr>
+              <td>Adresse &nbsp;&nbsp;&nbsp;</td>
+              <td>:&nbsp; {user?.address}</td>
+            </tr>
+          </tbody>
         </table>
       </section>
 
