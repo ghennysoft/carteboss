@@ -23,10 +23,10 @@ interface UserProps{
 }
 
 const Profile = () => {
+  const router = useRouter();
   const [token, setToken] = useState("");
   const [refresh, setRefresh] = useState("");
   const [user, setUser] = useState<UserProps>();
-  console.log({user, token, refresh});
   const params = useParams()
 
   useEffect(() => {
@@ -39,6 +39,11 @@ const Profile = () => {
     }
     getUser();
   }, [params.id])
+
+  const handleLogout = async () => {
+    window.localStorage.clear();
+    router.push("/")
+  }
 
   return (
     <div className="antialiased bg-body text-body font-body">
@@ -68,6 +73,9 @@ const Profile = () => {
           Accéder au tableau de bord
         </a>
       </div>}
+      <button onClick={handleLogout} className="inline-flex group py-2.5 px-4 items-center justify-center text-sm font-medium  hover:text-white border hover:bg-red rounded-full transition duration-200">
+        Deconnexion
+      </button>
 
       {/* About Content Section */}
       <section className="pb-12 lg:pb-24">
