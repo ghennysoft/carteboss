@@ -9,6 +9,7 @@ import Link from 'next/link';
 
 // Mock data - normally from API
 interface UserProps{
+  id: number,
   first_name: string,
   last_name: string,
   email: string,
@@ -22,22 +23,18 @@ interface UserProps{
 }
 
 const Profile = () => {
-  const token = window.localStorage.getItem('token');
-  const refresh = window.localStorage.getItem('refreshToken');
-  const currentUser = JSON.parse(window.localStorage.getItem('user') || '')?.id;
-
+  const [token, setToken] = useState("");
+  const [refresh, setRefresh] = useState("");
   const [user, setUser] = useState<UserProps>();
-  console.log(currentUser);
+  console.log({user, token, refresh});
   const params = useParams()
 
   useEffect(() => {
-    if(!token){
-      window.location.href="/";
-    }
-
     const getUser = async () => {
       const res = await api.get('api/auth/users/'+params?.id)
       setUser(res?.data);
+      setToken(window.localStorage.getItem('token') || "");
+      setRefresh(window.localStorage.getItem('refreshToken') || "");
       return res?.data;
     }
     getUser();
@@ -67,7 +64,7 @@ const Profile = () => {
       </section>
 
       {user?.role == "admin" || user?.role == "agent" && <div className='text-center pb-10'>
-        <a target='_blank' href={`${process.env.NEXT_PUBLIC_CLIENT_URL}?token=${token}&refresh=${refresh}&user=${currentUser}`} className="inline-flex group py-2.5 px-4 items-center justify-center text-sm font-medium  hover:text-white border hover:bg-blue-950 rounded-full transition duration-200">
+        <a target='_blank' href={`${process.env.NEXT_PUBLIC_CLIENT_URL}?token=${token}&refresh=${refresh}&user=${user.id}`} className="inline-flex group py-2.5 px-4 items-center justify-center text-sm font-medium  hover:text-white border hover:bg-blue-950 rounded-full transition duration-200">
           Accéder au tableau de bord
         </a>
       </div>}
