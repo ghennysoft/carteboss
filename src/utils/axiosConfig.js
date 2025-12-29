@@ -2,7 +2,7 @@ import axios from "axios";
 import { BASE_API_URL } from "./constante";
 
 const api = axios.create({
-  baseURL: BASE_API_URL,
+  baseURL: "https://carteboss-backend.onrender.com",
 });
 
 api.interceptors.request.use(
@@ -33,7 +33,7 @@ api.interceptors.response.use(
       if(typeof window !== 'undefined') {
         const refreshToken = localStorage.getItem('refreshToken');
         try {
-          const response = await axios.post('http://localhost:8000/api/auth/refresh', { refreshToken });
+          const response = await axios.post('https://carteboss-backend.onrender.com/api/auth/refresh', { refreshToken });
           
           if(response.data.token) {
             const newToken = response.data.token;
