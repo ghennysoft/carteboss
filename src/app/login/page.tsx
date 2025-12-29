@@ -25,6 +25,9 @@ const Login = () => {
   const [message, setMessage] = useState("")
   const [loading, setLoading] = useState(false)
 
+  console.log('URL: ',BASE_API_URL)
+  console.log('PROCESS: ',process.env.NEXT_PUBLIC_API_URL_PRODUCTION)
+
   const router = useRouter();
 
   const {
