@@ -68,14 +68,15 @@ const Profile = () => {
         </div>
       </section>
 
-      {user?.role == "admin" || user?.role == "agent" && <div className='text-center pb-10'>
-        <a target='_blank' href={`https://carteboss-crm.vercel.app?token=${token}&refresh=${refresh}&user=${user.id}`} className="inline-flex group py-2.5 px-4 items-center justify-center text-sm font-medium  hover:text-white border hover:bg-blue-950 rounded-full transition duration-200">
-          Accéder au tableau de bord
-        </a>
-      </div>}
-      <button onClick={handleLogout} className="inline-flex group py-2.5 px-4 items-center justify-center text-sm font-medium  hover:text-white border hover:bg-red rounded-full transition duration-200">
-        Deconnexion
-      </button>
+      <div className='flex justify-center items-center gap-3 pb-10'>
+        {user?.role == "admin" || user?.role == "agent" && 
+          <a target='_blank' href={`https://carteboss-crm.vercel.app?token=${token}&refresh=${refresh}&user=${user.id}`} className="inline-flex group py-2.5 px-4 items-center justify-center text-sm font-medium  hover:text-white border hover:bg-blue-950 rounded-full transition duration-200">
+            Accéder au tableau de bord
+          </a>}
+        <button onClick={handleLogout} className="inline-flex group py-2.5 px-4 items-center justify-center text-sm font-medium  hover:text-white border hover:bg-red rounded-full transition duration-200">
+          Deconnexion
+        </button>
+      </div>
 
       {/* About Content Section */}
       <section className="pb-12 lg:pb-24">

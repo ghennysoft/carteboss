@@ -72,33 +72,18 @@ export default function NavBar() {
 
               <div className="flex items-center justify-end">
                 <div className="hidden md:block">
-                  {isClient && token && user ? (
-                    <a 
-                      href={`/profile/${user.id}`} 
-                      className="inline-flex group py-2.5 px-4 items-center justify-center text-sm font-medium hover:text-white border hover:bg-blue-950 rounded-full transition duration-200"
-                    >
-                      <span className="mr-2">Profile</span>
-                      <span className="transform group-hover:translate-x-0.5 transition-transform duration-200">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="">
-                          <path d="M4.75 10H15.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                          <path d="M10 4.75L15.25 10L10 15.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </span>
-                    </a>
-                  ) : (
-                    <a 
-                      href="/register" 
-                      className="inline-flex group py-2.5 px-4 items-center justify-center text-sm font-medium hover:text-white border hover:bg-blue-950 rounded-full transition duration-200"
-                    >
-                      <span className="mr-2">Créer un compte</span>
-                      <span className="transform group-hover:translate-x-0.5 transition-transform duration-200">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="">
-                          <path d="M4.75 10H15.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                          <path d="M10 4.75L15.25 10L10 15.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </span>
-                    </a>
-                  )}
+                  <a 
+                    href="#!" 
+                    className="inline-flex group py-2.5 px-4 items-center justify-center text-sm font-medium hover:text-white border hover:bg-blue-950 rounded-full transition duration-200"
+                  >
+                    <span className="mr-2">Souscrire</span>
+                    <span className="transform group-hover:translate-x-0.5 transition-transform duration-200">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="">
+                        <path d="M4.75 10H15.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M10 4.75L15.25 10L10 15.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </span>
+                  </a>
                 </div>
                 
                 <button 
