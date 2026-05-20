@@ -56,7 +56,7 @@ export default function NavBar() {
           <div className="container mx-auto px-4">
             <div className="relative flex items-center justify-between">
               <Link href="/" className="inline-block">
-                <img src="/logo2.png" width={120} height={80} alt="Logo" />
+                <img src="/logo.png" width={120} height={80} alt="Logo" />
               </Link>
               
               <ul className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden md:flex">
