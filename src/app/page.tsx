@@ -5,7 +5,7 @@ import Footer from '../components/footer';
 import NavBar from '../components/navbar';
 import { useState, ReactNode } from 'react';
 import Link from 'next/link';
-import { BriefcaseBusiness, Clock, Target, User, Users2, UserStar } from 'lucide-react';
+import { BriefcaseBusiness, Clock, Quote, Target, User, Users, Users2, UserStar } from 'lucide-react';
 
 interface AccordionProps {
   title: string,
@@ -139,7 +139,7 @@ export default function Home() {
       <section className="mt-5">
         <div className="container mx-auto px-4">
           <h2 className="font-semibold text-3xl mb-16 text-center">Pourquoi BOSS ?</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 -mx-4 gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-4 mb-10 gap-5">
             <div className="w-full px-4 font-semibold mb-10 md:mb-0">
               <div className="text-center">
                 <h5 className="flex justify-center">
@@ -185,56 +185,54 @@ export default function Home() {
               </div>
             </div>
           </div>
+          <div className='flex justify-center'>
+            <Link href={'/#!'} className='bg-orange-400 text-white py-2 px-10 rounded-md'>
+              Commencer maintenant 
+              {/* &nbsp;
+              <span className="transform group-hover:translate-x-0.5 transition-transform duration-200">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="">
+                  <path d="M4.75 10H15.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M10 4.75L15.25 10L10 15.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </span> */}
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Why Section */}
-      <section className="mt-10">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 -mx-4 gap-5">
-            <div className="w-full px-4 font-semibold mb-10 md:mb-0">
-              <div className="text-center">
-                <h5 className="flex justify-center">
-                  <Clock size={80} className='text-orange-400' />
-                </h5>
-                <span className="block my-5 text-lg">Gagnez du temps</span>
-                <span className="text-sm opacity-75">
-                  Partagez vos informations en quelques secondes et concentrez-vous sur l&apos;essentiel.
-                </span>
+      {/* Testimonies Section */}
+      <section className="mt-20">
+        <div className="container mx-auto p-5 bg-gray-100 rounded-lg gap-5">
+          <h2 className='text-xl text-center font-semibold mb-2'>Ils utilisent déjà BOSS</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3">
+            <div className="flex mb-3">
+              <div>
+                <img src="/temoignage_1.png" width={100} height={80} alt="image" />
+              </div>
+              <div className='ml-5'>
+              <span className="text-orange-400  "><Quote fill='lab(70.0429% 42.5156 75.8207)' strokeWidth={0} /></span>
+                <span className="block py-3 text-md">La carte BOSS fonctionne très bien.</span>
+                <b className="text-sm text-orange-400">- Mohamed K.</b>
               </div>
             </div>
-            <div className="w-full px-4 font-semibold mb-10 md:mb-0">
-              <div className="text-center">
-                <h5 className="flex justify-center">
-                  <UserStar size={80} className='text-orange-400' />
-                </h5>
-                <span className="block my-5 text-lg">Impressionnez dès le premier contact</span>
-                <span className="text-sm opacity-75">
-                  Offrez une expérience moderne et professionnel qui marque les esprits.
-                </span>
+            <div className="flex mb-3">
+              <div>
+                <img src="/temoignage_2.png" width={100} height={80} alt="image" />
+              </div>
+              <div className='ml-5'>
+                <span className=""><Quote fill='lab(70.0429% 42.5156 75.8207)' strokeWidth={0} /></span>
+                <span className="block py-3 text-md">Beaucoup de mes connexions ont appreciées et étaient impressionnées par la carte.</span>
+                <b className="text-sm text-orange-400">- Christian T.</b>
               </div>
             </div>
-            <div className="w-full px-4 font-semibold mb-10 md:mb-0">
-              <div className="text-center">
-                <h5 className="flex justify-center">
-                  <Users2 size={80} className='text-orange-400' />
-                </h5>
-                <span className="block my-5 text-lg">Développez votre réseau plus vite</span>
-                <span className="text-sm opacity-75">
-                  Connectez-vous facilement et élargissez votre réseau avec des contacts qualifiés.
+            <div className="flex justify-center">
+              <span className='flex border rounded-lg p-5'>
+                <Users width={50} height={50} />
+                <span className='pl-5'>
+                  <b className="text-5xl text-orange-400">+100</b>
+                  <b className="block pt-3">Professionnels <br /> déjà connectés.</b>
                 </span>
-              </div>
-            </div>
-            <div className="w-full px-4 font-semibold mb-10 md:mb-0">
-              <div className="text-center">
-                <h5 className="flex justify-center">
-                  <Target size={80} className='text-orange-400' />
-                </h5>
-                <span className="block my-5 text-lg">Créez des opportunités réelles</span>
-                <span className="text-sm opacity-75">
-                  Chaque contact devient une opportunité de collaboration, de vente et de croissance.
-                </span>
-              </div>
+              </span>
             </div>
           </div>
         </div>

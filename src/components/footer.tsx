@@ -17,8 +17,20 @@ export default function Footer() {
             <div className='mb-10'>
               <h5 className='font-semibold text-orange-400 mb-4'>CONNECTER</h5>
               <div className='flex items-center gap-2 mb-2 opacity-80'>
-                <span>IN</span>
+                <img src="/social/instagram.png" width={25} alt="instagram" className='rounded-full' />
                 <span>INSTAGRAM</span>
+              </div>
+              <div className='flex items-center gap-2 mb-2 opacity-80'>
+                <img src="/social/facebook.png" width={25} alt="facebook" className='rounded-full' />
+                <span>FACEBOOK</span>
+              </div>
+              <div className='flex items-center gap-2 mb-2 opacity-80'>
+                <img src="/social/youtube.jpg" width={25} alt="youtube" className='rounded-full' />
+                <span>YOUTUBE</span>
+              </div>
+              <div className='flex items-center gap-2 mb-2 opacity-80'>
+                <img src="/social/tiktok.jpg" width={25} alt="tiktok" className='rounded-full' />
+                <span>TIKTOK</span>
               </div>
             </div>
             <div className='mb-10'>
@@ -46,17 +58,24 @@ export default function Footer() {
           </div>
 
           <br /><br />
-          <div className="text-center">
+          {/* <div className="text-center">
             Designed by{' '}
             <a className="inline-block text-gray-600 hover:blue-950 font-medium" href="https://www.ghennysoft.com" target="_blank" rel="noopener noreferrer">
               GhennySoft
             </a>
-            {/* {' '}• Distributed by{' '}
-            <a className="inline-block text-gray-600 hover:blue-950 font-medium" href="https://www.ThemeWagon.store" target="_blank" rel="noopener noreferrer">
-              ThemeWagon
-            </a> */}
-          </div>
-          <p className="text-sm text-gray-500 mb-3 text-center">© {new Date().getFullYear()} La carte Boss. Tout droits reservé.</p>
+          </div> */}
+          <p className="flex text-sm text-gray-500 mb-3 text-center">
+            <span className='text-white opacity-80'>© {new Date().getFullYear()} BOSS. TOUT DROITS RESERVES. &nbsp;&nbsp;&nbsp;</span>
+            <span className=''>POLITIQUE DE CONFIDENTIALITE</span> | 
+            <span className=''>CONDITIONS D&apos;UTILISATION</span> | 
+            <span className=''>ACCORD NOUVEL ASSOCIE</span> | 
+            <span className=''>POLITIQUE DE REMBOURSEMENT</span> &nbsp;&nbsp;&nbsp; 
+            <span className='flex gap-2'>
+              <img src="/social/visa.png" width={80} alt="visa"  style={{ height: "50px" }}/>
+              <img src="/social/mastercard.png" width={80} alt="mastercard"  style={{ height: "50px" }}/>
+              <img src="/social/orange.jpg" width={80} alt="orange"  style={{ height: "50px" }}/>
+            </span> 
+          </p>
         </div>
       </section>
     </div>
