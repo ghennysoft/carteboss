@@ -1,5 +1,6 @@
 "use client"
 
+import { User } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
@@ -63,10 +64,16 @@ export default function NavBar() {
                   <Link className="inline-block hover:blue-950 font-medium" href="/">Accueil</Link>
                 </li>
                 <li className="mr-8">
-                  <a className="inline-block hover:blue-950 font-medium" href="/about">A propos</a>
+                  <Link className="inline-block hover:blue-950 font-medium" href="/">A propos</Link>
                 </li>
                 <li className="mr-8">
-                  <a className="inline-block hover:blue-950 font-medium" href="/contact">Nous contacter</a>
+                  <Link className="inline-block hover:blue-950 font-medium" href="/">Services</Link>
+                </li>
+                <li className="mr-8">
+                  <Link className="inline-block hover:blue-950 font-medium" href="/">Devenir un Agent</Link>
+                </li>
+                <li className="mr-8">
+                  <Link className="inline-block hover:blue-950 font-medium" href="/">Nous contacter</Link>
                 </li>
               </ul>
 
@@ -74,15 +81,10 @@ export default function NavBar() {
                 <div className="hidden md:block">
                   <a 
                     href="#!" 
-                    className="inline-flex group py-2.5 px-4 items-center justify-center text-sm font-medium hover:text-white border hover:bg-blue-950 rounded-full transition duration-200"
+                    className="inline-flex group py-2.5 px-4 items-center justify-center text-sm font-medium border-orange-400 rounded-full transition duration-200"
                   >
-                    <span className="mr-2">Souscrire</span>
-                    <span className="transform group-hover:translate-x-0.5 transition-transform duration-200">
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="">
-                        <path d="M4.75 10H15.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M10 4.75L15.25 10L10 15.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </span>
+                    <User size={18} className='text-orange-400 mr-2' />
+                    <span className="mr-2">Connexion Agent</span>
                   </a>
                 </div>
                 
