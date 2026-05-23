@@ -52,7 +52,7 @@ export default function Home() {
       {/* Header */}
       <div className="relative text-white" style={{ backgroundImage: "url(/hero.png)", backgroundSize: "cover" }}>
         <NavBar />
-        <div className="container mx-auto px-4 py-10 relative grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="container lg:px-10 py-10 relative grid grid-cols-1 lg:grid-cols-2 gap-3">
           <div className="max-w-lg xl:max-w-xl mx-auto text-center lg:text-left">
             <h1 className="font-heading text-5xl font-bold xs:text-7xl xl:text-7xl tracking-tight mb-8">
               Tranformez chaque contact en <span className='text-orange-400'>opportunité.</span>
@@ -139,7 +139,7 @@ export default function Home() {
       <section className="mt-5">
         <div className="container mx-auto px-4">
           <h2 className="font-semibold text-3xl mb-16 text-center">Pourquoi BOSS ?</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 mb-10 gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 mb-10 gap-5">
             <div className="w-full px-4 font-semibold mb-10 md:mb-0">
               <div className="text-center">
                 <h5 className="flex justify-center">
@@ -204,8 +204,8 @@ export default function Home() {
       <section className="mt-20">
         <div className="container mx-auto p-5 bg-gray-100 rounded-lg gap-5">
           <h2 className='text-xl text-center font-semibold mb-2'>Ils utilisent déjà BOSS</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3">
-            <div className="flex mb-3">
+          <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-3">
+            <div className="flex mb-3 md:col-span-2 lg:col-span-1">
               <div>
                 <img src="/temoignage_1.png" width={100} height={80} alt="image" />
               </div>
@@ -215,9 +215,9 @@ export default function Home() {
                 <b className="text-sm text-orange-400">- Mohamed K.</b>
               </div>
             </div>
-            <div className="flex mb-3">
+            <div className="flex mb-3 md:col-span-2 lg:col-span-1">
               <div>
-                <img src="/temoignage_2.png" width={100} height={80} alt="image" />
+                <img src="/temoignage_2.png" width={300} height={80} alt="image" />
               </div>
               <div className='ml-5'>
                 <span className=""><Quote fill='lab(70.0429% 42.5156 75.8207)' strokeWidth={0} /></span>
@@ -225,7 +225,7 @@ export default function Home() {
                 <b className="text-sm text-orange-400">- Christian T.</b>
               </div>
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-center md:col-span-4 lg:col-span-1">
               <span className='flex border rounded-lg p-5'>
                 <Users width={50} height={50} />
                 <span className='pl-5'>

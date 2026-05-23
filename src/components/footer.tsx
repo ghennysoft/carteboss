@@ -48,7 +48,7 @@ export default function Footer() {
               <p className='mb-2 opacity-80'>CARRIERES</p>
               <p className='mb-2 opacity-80'>EVENEMENTS</p>
             </div>
-            <div className='mb-10 col-span-2 md:col-span-1'>
+            <div className='mb-10 col-span-2 lg:col-span-1'>
               <h5 className='font-semibold mb-4'>Restez à l&apos;afflut des offres et des mises à jour logicielles</h5>
               <span className='mb-2 opacity-80'>Nous ajoutons consamment des nouvelles fonctionnaliés pour améliorer votre expérience de réseautage.</span>
               <form action="">
@@ -58,24 +58,26 @@ export default function Footer() {
           </div>
 
           <br /><br />
-          {/* <div className="text-center">
-            Designed by{' '}
-            <a className="inline-block text-gray-600 hover:blue-950 font-medium" href="https://www.ghennysoft.com" target="_blank" rel="noopener noreferrer">
-              GhennySoft
-            </a>
-          </div> */}
-          <p className="flex text-sm text-gray-500 mb-3 text-center">
-            <span className='text-white opacity-80'>© {new Date().getFullYear()} BOSS. TOUT DROITS RESERVES. &nbsp;&nbsp;&nbsp;</span>
-            <span className=''>POLITIQUE DE CONFIDENTIALITE</span> | 
-            <span className=''>CONDITIONS D&apos;UTILISATION</span> | 
-            <span className=''>ACCORD NOUVEL ASSOCIE</span> | 
+          
+          <div className="lg:flex text-sm text-gray-500 mb-3 text-center">
+            <span className='block mb-3 text-white opacity-80'>© {new Date().getFullYear()} BOSS. TOUT DROITS RESERVES. &nbsp;&nbsp;&nbsp;</span>
+            <span className=''>POLITIQUE DE CONFIDENTIALITE</span>&nbsp;|&nbsp; 
+            <span className=''>CONDITIONS D&apos;UTILISATION</span>&nbsp;|&nbsp;
+            <span className=''>ACCORD NOUVEL ASSOCIE</span>&nbsp;|&nbsp;
             <span className=''>POLITIQUE DE REMBOURSEMENT</span> &nbsp;&nbsp;&nbsp; 
-            <span className='flex gap-2'>
+            <span className='flex justify-center lg:justify-start gap-2 mt-3 lg:mt-0'>
               <img src="/social/visa.png" width={80} alt="visa"  style={{ height: "50px" }}/>
               <img src="/social/mastercard.png" width={80} alt="mastercard"  style={{ height: "50px" }}/>
               <img src="/social/orange.jpg" width={80} alt="orange"  style={{ height: "50px" }}/>
             </span> 
-          </p>
+          </div>
+
+          <div className="text-center mt-20">
+            <span className='opacity-80'>Designed by{' '} </span>
+            <a className="inline-block text-orange-400 font-medium" href="https://www.ghennysoft.com" target="_blank" rel="noopener noreferrer">
+              GhennySoft
+            </a>
+          </div>
         </div>
       </section>
     </div>

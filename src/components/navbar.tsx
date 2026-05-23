@@ -40,7 +40,7 @@ export default function NavBar() {
   // Fermer le menu mobile quand on clique sur un lien
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 1024) {
         setMobileNavOpen(false);
       }
     };
@@ -59,26 +59,26 @@ export default function NavBar() {
                 <img src="/logo.png" width={150} height={80} alt="Logo" />
               </Link>
               
-              <ul className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden md:flex">
+              <ul className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden lg:flex">
                 <li className="mr-8">
                   <Link className="inline-block hover:blue-950 font-medium" href="/">Accueil</Link>
                 </li>
                 <li className="mr-8">
-                  <Link className="inline-block hover:blue-950 font-medium" href="/">A propos</Link>
+                  <Link className="inline-block hover:blue-950 font-medium" href="/">A&nbsp;propos</Link>
                 </li>
                 <li className="mr-8">
                   <Link className="inline-block hover:blue-950 font-medium" href="/">Services</Link>
                 </li>
                 <li className="mr-8">
-                  <Link className="inline-block hover:blue-950 font-medium" href="/">Devenir un Agent</Link>
+                  <Link className="inline-block hover:blue-950 font-medium" href="/">Devenir&nbsp;un&nbsp;Agent</Link>
                 </li>
                 <li className="mr-8">
-                  <Link className="inline-block hover:blue-950 font-medium" href="/">Nous contacter</Link>
+                  <Link className="inline-block hover:blue-950 font-medium" href="/">Nous&nbsp;contacter</Link>
                 </li>
               </ul>
 
               <div className="flex items-center justify-end">
-                <div className="hidden md:block">
+                <div className="hidden lg:block">
                   <a 
                     href="#!" 
                     className="inline-flex group py-2.5 px-4 items-center justify-center text-sm font-medium border-orange-400 rounded-full transition duration-200"
@@ -90,7 +90,7 @@ export default function NavBar() {
                 
                 <button 
                   onClick={() => setMobileNavOpen(!mobileNavOpen)}
-                  className="md:hidden"
+                  className="lg:hidden"
                 >
                   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="">
                     <path d="M5.19995 23.2H26.7999" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -126,10 +126,19 @@ export default function NavBar() {
             <div className="pt-8 pb-12 mb-auto">
               <ul className="flex-col">
                 <li className="mb-6">
-                  <a className="inline-block font-medium" href="/about">A propos de nous</a>
+                  <Link className="inline-block text-blue-950 font-medium" href="/">Accueil</Link>
                 </li>
                 <li className="mb-6">
-                  <a className="inline-block font-medium" href="/contact">Nous contacter</a>
+                  <Link className="inline-block text-blue-950 font-medium" href="/">A propos</Link>
+                </li>
+                <li className="mb-6">
+                  <Link className="inline-block text-blue-950 font-medium" href="/">Services</Link>
+                </li>
+                <li className="mb-6">
+                  <Link className="inline-block text-blue-950 font-medium" href="/">Devenir un Agent</Link>
+                </li>
+                <li className="mb-6">
+                  <Link className="inline-block text-blue-950 font-medium" href="/">Nous contacter</Link>
                 </li>
               </ul>
               {isClient && token && user ? (
@@ -137,8 +146,8 @@ export default function NavBar() {
                   Profile
                 </a>
               ) : (
-                <a href="/login" className="inline-flex py-2.5 px-4 mr-6 items-center justify-center text-sm font-medium text-teal-900 hover:text-white border border-teal-900 hover:bg-teal-900 rounded-full transition duration-200">
-                  Créer un compte
+                <a href="/" className="inline-flex py-2.5 px-4 mr-6 items-center justify-center text-sm font-medium text-teal-900 hover:text-white border border-teal-900 hover:bg-teal-900 rounded-full transition duration-200">
+                  Connexion agent
                 </a>
               )}
             </div>
