@@ -1,7 +1,7 @@
 "use client"
 
-import NavBar from '../../../components/Navbar';
-import Footer from '../../../components/Footer';
+import Navbar from '@/components/navbar'
+import Footer from '@/components/footer'
 import api from '@/utils/axiosConfig';
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
@@ -47,7 +47,7 @@ const Profile = () => {
   return (
     <div className="antialiased bg-body text-body font-body">
       {/* Header */}
-      <NavBar />
+      <Navbar />
       
       {/* Hero Section */}
       <section className="relative py-12 lg:py-24 overflow-hidden">

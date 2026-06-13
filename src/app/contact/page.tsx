@@ -1,7 +1,7 @@
 "use client"
 
-import Footer from '@/components/Footer';
-import NavBar from '@/components/Navbar';
+import Navbar from '@/components/navbar'
+import Footer from '@/components/footer'
 import { useState } from 'react';
 
 const Contact = () => {
@@ -30,7 +30,7 @@ const Contact = () => {
   return (
     <div className="antialiased bg-body text-body font-body">
       {/* Banner */}
-      <NavBar />
+      <Navbar />
 
       {/* Contact Section */}
       <section className="py-12 lg:py-24 relative overflow-hidden">

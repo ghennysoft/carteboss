@@ -87,7 +87,7 @@ export default function Footer() {
               </div>
             </div>
             <div className="bg-[#ff6600] rounded-md py-1.5 px-2.5 flex items-center gap-1.5">
-              <div className="relative w-3.5 h-3.5">
+              <div className="relative w-3.5 h-3.5 ">
                 <svg width="14" height="14" viewBox="0 0 14 14">
                   <circle cx="7" cy="7" r="6.5" fill="white" opacity="0.9"/>
                   <circle cx="7" cy="7" r="4" fill="#ff6600"/>

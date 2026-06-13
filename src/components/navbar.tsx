@@ -10,7 +10,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-100 flex items-center justify-between px-[5%] h-[72px] bg-navy/97 backdrop-blur-sm border-b border-gold/20">
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2.5 ">
           <Image 
             src="/logo.png" 
             alt="BOSS" 
