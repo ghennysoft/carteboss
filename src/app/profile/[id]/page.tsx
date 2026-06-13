@@ -5,7 +5,6 @@ import Footer from '../../../components/Footer';
 import api from '@/utils/axiosConfig';
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import Link from 'next/link';
 
 // Mock data - normally from API
 interface UserProps{

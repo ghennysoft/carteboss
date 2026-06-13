@@ -1,7 +1,7 @@
 "use client"
 
-import Footer from '../../components/Footer';
-import NavBar from '../../components/Navbar';
+import Footer from '@/components/Footer';
+import NavBar from '@/components/Navbar';
 import { useState } from 'react';
 
 const Contact = () => {
