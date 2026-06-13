@@ -1,7 +1,7 @@
 "use client"
 
-import NavBar from '../../../components/navbar';
-import Footer from '../../../components/footer';
+import NavBar from '../../../components/Navbar';
+import Footer from '../../../components/Footer';
 import api from '@/utils/axiosConfig';
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';

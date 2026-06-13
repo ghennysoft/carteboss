@@ -1,85 +1,97 @@
-"use client"
+'use client'
 
-import Link from 'next/link';
+import Image from 'next/image'
 
 export default function Footer() {
   return (
-    <div className="antialiased bg-body text-body font-body">
-      {/* Footer */}
-      <section className="relative py-12 lg:py-12 bg-black text-white overflow-hidden">
-        <div className="container px-4 mx-auto relative">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
-            <div className='mb-10'>
-              <h5 className='font-semibold text-orange-400 mb-4'>PROFILE</h5>
-              <p className='mb-2 opacity-80'>CREER UN COMPTE</p>
-              <p className='mb-2 opacity-80'>SE CONNECTER</p>
-            </div>
-            <div className='mb-10'>
-              <h5 className='font-semibold text-orange-400 mb-4'>CONNECTER</h5>
-              <div className='flex items-center gap-2 mb-2 opacity-80'>
-                <img src="/social/instagram.png" width={25} alt="instagram" className='rounded-full' />
-                <span>INSTAGRAM</span>
-              </div>
-              <div className='flex items-center gap-2 mb-2 opacity-80'>
-                <img src="/social/facebook.png" width={25} alt="facebook" className='rounded-full' />
-                <span>FACEBOOK</span>
-              </div>
-              <div className='flex items-center gap-2 mb-2 opacity-80'>
-                <img src="/social/youtube.jpg" width={25} alt="youtube" className='rounded-full' />
-                <span>YOUTUBE</span>
-              </div>
-              <div className='flex items-center gap-2 mb-2 opacity-80'>
-                <img src="/social/tiktok.jpg" width={25} alt="tiktok" className='rounded-full' />
-                <span>TIKTOK</span>
-              </div>
-            </div>
-            <div className='mb-10'>
-              <h5 className='font-semibold text-orange-400 mb-4'>RESSOURCES</h5>
-              <p className='mb-2 opacity-80'>BLOG</p>
-              <p className='mb-2 opacity-80'>ACTUALITE</p>
-              <p className='mb-2 opacity-80'>A PROPOS</p>
-              <p className='mb-2 opacity-80'>CONTACT</p>
-              <p className='mb-2 opacity-80'>EXPEDITION</p>
-              <p className='mb-2 opacity-80'>RETOURS</p>
-              <p className='mb-2 opacity-80'>CENTRE D&apos;AIDE</p>
-            </div>
-            <div className='mb-10'>
-              <h5 className='font-semibold text-orange-400 mb-4'>DEVENIR AGENT</h5>
-              <p className='mb-2 opacity-80'>CARRIERES</p>
-              <p className='mb-2 opacity-80'>EVENEMENTS</p>
-            </div>
-            <div className='mb-10 col-span-2 lg:col-span-1'>
-              <h5 className='font-semibold mb-4'>Restez à l&apos;afflut des offres et des mises à jour logicielles</h5>
-              <span className='mb-2 opacity-80'>Nous ajoutons consamment des nouvelles fonctionnaliés pour améliorer votre expérience de réseautage.</span>
-              <form action="">
-                <input type="text" placeholder="Entrez l'email" />
-              </form>
+    <footer className="bg-navy border-t border-white/6 pt-[72px] pb-10 px-[5%]">
+      <div className="max-w-[1280px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-[60px] mb-[60px]">
+          <div>
+            <Image src="/images/BOSS_LOGO.png" alt="BOSS" width={36} height={36} className="brightness-0 invert mb-1" />
+            <p className="text-sm leading-relaxed text-white/40 mt-4 mb-6 max-w-[260px]">
+              La carte de visite intelligente qui transforme chaque contact en opportunité de croissance.
+            </p>
+            <div className="flex gap-3">
+              <a href="#" className="w-9 h-9 border border-white/12 rounded-lg flex items-center justify-center text-white/50 text-sm hover:border-gold hover:text-gold transition-all">in</a>
+              <a href="#" className="w-9 h-9 border border-white/12 rounded-lg flex items-center justify-center text-white/50 text-sm hover:border-gold hover:text-gold transition-all">f</a>
+              <a href="#" className="w-9 h-9 border border-white/12 rounded-lg flex items-center justify-center text-white/50 text-sm hover:border-gold hover:text-gold transition-all">▶</a>
+              <a href="#" className="w-9 h-9 border border-white/12 rounded-lg flex items-center justify-center text-white/50 text-sm hover:border-gold hover:text-gold transition-all">♪</a>
             </div>
           </div>
-
-          <br /><br />
           
-          <div className="lg:flex text-sm text-gray-500 mb-3 text-center">
-            <span className='block mb-3 text-white opacity-80'>© {new Date().getFullYear()} BOSS. TOUT DROITS RESERVES. &nbsp;&nbsp;&nbsp;</span>
-            <span className=''>POLITIQUE DE CONFIDENTIALITE</span>&nbsp;|&nbsp; 
-            <span className=''>CONDITIONS D&apos;UTILISATION</span>&nbsp;|&nbsp;
-            <span className=''>ACCORD NOUVEL ASSOCIE</span>&nbsp;|&nbsp;
-            <span className=''>POLITIQUE DE REMBOURSEMENT</span> &nbsp;&nbsp;&nbsp; 
-            <span className='flex justify-center lg:justify-start gap-2 mt-3 lg:mt-0'>
-              <img src="/social/visa.png" width={80} alt="visa"  style={{ height: "50px" }}/>
-              <img src="/social/mastercard.png" width={80} alt="mastercard"  style={{ height: "50px" }}/>
-              <img src="/social/orange.jpg" width={80} alt="orange"  style={{ height: "50px" }}/>
-            </span> 
+          <div>
+            <h4 className="text-xs font-semibold tracking-[0.08em] uppercase text-white/30 mb-5">Profil</h4>
+            <ul className="flex flex-col gap-2.5">
+              <li><a href="#" className="text-sm text-white/55 hover:text-gold-light transition-colors">Créer un compte</a></li>
+              <li><a href="#" className="text-sm text-white/55 hover:text-gold-light transition-colors">Se connecter</a></li>
+            </ul>
           </div>
-
-          <div className="text-center mt-20">
-            <span className='opacity-80'>Designed by{' '} </span>
-            <a className="inline-block text-orange-400 font-medium" href="https://www.ghennysoft.com" target="_blank" rel="noopener noreferrer">
-              GhennySoft
-            </a>
+          
+          <div>
+            <h4 className="text-xs font-semibold tracking-[0.08em] uppercase text-white/30 mb-5">Ressources</h4>
+            <ul className="flex flex-col gap-2.5">
+              <li><a href="#" className="text-sm text-white/55 hover:text-gold-light transition-colors">Blog</a></li>
+              <li><a href="#" className="text-sm text-white/55 hover:text-gold-light transition-colors">Actualités</a></li>
+              <li><a href="#" className="text-sm text-white/55 hover:text-gold-light transition-colors">À propos</a></li>
+              <li><a href="#" className="text-sm text-white/55 hover:text-gold-light transition-colors">Contact</a></li>
+              <li><a href="#" className="text-sm text-white/55 hover:text-gold-light transition-colors">Centre d&apos;aide</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 className="text-xs font-semibold tracking-[0.08em] uppercase text-white/30 mb-5">Devenir agent</h4>
+            <ul className="flex flex-col gap-2.5">
+              <li><a href="#" className="text-sm text-white/55 hover:text-gold-light transition-colors">Carrières</a></li>
+              <li><a href="#" className="text-sm text-white/55 hover:text-gold-light transition-colors">Actualités</a></li>
+              <li><a href="#" className="text-sm text-white/55 hover:text-gold-light transition-colors">Événements</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 className="text-base font-semibold text-white mb-2">Restez à l&apos;affût des offres</h4>
+            <p className="text-[13px] leading-relaxed text-white/40 mb-4">Nous ajoutons constamment de nouvelles fonctionnalités pour améliorer votre expérience.</p>
+            <div className="flex gap-2">
+              <input type="email" placeholder="Votre email" className="flex-1 bg-white/6 border border-white/10 rounded-md py-2.5 px-3.5 font-dm-sans text-sm text-white outline-none focus:border-gold transition-colors placeholder:text-white/30" />
+              <button className="bg-gold text-navy border-none rounded-md py-2.5 px-[18px] font-dm-sans text-sm font-semibold hover:bg-gold-light transition-colors whitespace-nowrap">S&apos;abonner</button>
+            </div>
           </div>
         </div>
-      </section>
-    </div>
-  );
-};
+        
+        <div className="border-t border-white/6 pt-8 flex justify-between items-center gap-6 flex-wrap">
+          <p className="text-[13px] text-white/30">© 2026 BOSS. Tous droits réservés.</p>
+          <div className="flex gap-6 flex-wrap">
+            <a href="#" className="text-xs text-white/30 hover:text-white/60 transition-colors">Politique de confidentialité</a>
+            <a href="#" className="text-xs text-white/30 hover:text-white/60 transition-colors">Conditions d&apos;utilisation</a>
+            <a href="#" className="text-xs text-white/30 hover:text-white/60 transition-colors">Accord nouvel associé</a>
+            <a href="#" className="text-xs text-white/30 hover:text-white/60 transition-colors">Politique de remboursement</a>
+          </div>
+          
+          <div className="flex items-center gap-2">
+            <div className="bg-[#1a1f71] rounded-md py-1.5 px-2.5 flex items-center">
+              <span className="font-['Arial',sans-serif] text-[13px] font-black italic text-white tracking-[1px]">VISA</span>
+            </div>
+            <div className="bg-[#252525] rounded-md py-1.5 px-2 flex items-center">
+              <div className="relative w-[36px] h-[22px]">
+                <svg width="36" height="22" viewBox="0 0 36 22">
+                  <circle cx="13" cy="11" r="9" fill="#EB001B"/>
+                  <circle cx="23" cy="11" r="9" fill="#F79E1B"/>
+                  <path d="M18 4.3a9 9 0 010 13.4A9 9 0 0118 4.3z" fill="#FF5F00"/>
+                </svg>
+              </div>
+            </div>
+            <div className="bg-[#ff6600] rounded-md py-1.5 px-2.5 flex items-center gap-1.5">
+              <div className="relative w-[14px] h-[14px]">
+                <svg width="14" height="14" viewBox="0 0 14 14">
+                  <circle cx="7" cy="7" r="6.5" fill="white" opacity="0.9"/>
+                  <circle cx="7" cy="7" r="4" fill="#ff6600"/>
+                </svg>
+              </div>
+              <span className="font-dm-sans text-[11px] font-bold text-white whitespace-nowrap">Orange Money</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}
