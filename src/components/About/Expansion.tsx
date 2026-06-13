@@ -35,7 +35,7 @@ export default function Expansion() {
             <div className="mt-2">
               {timeline.map((item, index) => (
                 <div key={index} className="flex gap-5 items-start mb-7">
-                  <div className="w-9 h-9 bg-gold/12 border border-gold/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div className="w-9 h-9 bg-gold/12 border border-gold/30 rounded-full flex items-center justify-center shrink-0 mt-0.5">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gold-light">
                       <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>

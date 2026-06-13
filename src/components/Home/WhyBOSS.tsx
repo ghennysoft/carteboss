@@ -26,7 +26,7 @@ export default function WhyBOSS() {
 
   return (
     <section className="py-[100px] px-[5%] bg-offWhite">
-      <div className="max-w-[1280px] mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center">
           <span className="section-tag">Avantages</span>
           <h2 className="font-playfair text-[clamp(32px,3.5vw,52px)] font-bold">

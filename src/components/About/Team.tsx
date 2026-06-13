@@ -12,7 +12,7 @@ export default function Team() {
 
   return (
     <section className="py-24 px-[5%] bg-offWhite">
-      <div className="max-w-[1280px] mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center">
           <span className="section-tag">Derrière BOSS</span>
           <h2 className="font-playfair text-[clamp(32px,3.5vw,48px)] font-bold">

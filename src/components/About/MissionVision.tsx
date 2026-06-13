@@ -3,9 +3,9 @@
 export default function MissionVision() {
   return (
     <section className="py-24 px-[5%] bg-navy">
-      <div className="max-w-[1280px] mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center">
-          <span className="section-tag !text-gold-light before:!text-white/30">Ce qui nous guide</span>
+          <span className="section-tag text-gold-light! before:text-white/30!">Ce qui nous guide</span>
           <h2 className="font-playfair text-[clamp(32px,3.5vw,48px)] font-bold text-white">
             Mission &amp; <span className="text-gold-light">Vision</span>
           </h2>

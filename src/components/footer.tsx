@@ -5,10 +5,16 @@ import Image from 'next/image'
 export default function Footer() {
   return (
     <footer className="bg-navy border-t border-white/6 pt-[72px] pb-10 px-[5%]">
-      <div className="max-w-[1280px] mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-[60px] mb-[60px]">
           <div>
-            <Image src="/images/BOSS_LOGO.png" alt="BOSS" width={36} height={36} className="brightness-0 invert mb-1" />
+            <Image 
+              src="/logo.png" 
+              alt="BOSS" 
+              width={100} 
+              height={100}
+              className="brightness-0 invert mb-1"
+            />
             <p className="text-sm leading-relaxed text-white/40 mt-4 mb-6 max-w-[260px]">
               La carte de visite intelligente qui transforme chaque contact en opportunité de croissance.
             </p>
@@ -72,7 +78,7 @@ export default function Footer() {
               <span className="font-['Arial',sans-serif] text-[13px] font-black italic text-white tracking-[1px]">VISA</span>
             </div>
             <div className="bg-[#252525] rounded-md py-1.5 px-2 flex items-center">
-              <div className="relative w-[36px] h-[22px]">
+              <div className="relative w-9 h-[22px]">
                 <svg width="36" height="22" viewBox="0 0 36 22">
                   <circle cx="13" cy="11" r="9" fill="#EB001B"/>
                   <circle cx="23" cy="11" r="9" fill="#F79E1B"/>
@@ -81,7 +87,7 @@ export default function Footer() {
               </div>
             </div>
             <div className="bg-[#ff6600] rounded-md py-1.5 px-2.5 flex items-center gap-1.5">
-              <div className="relative w-[14px] h-[14px]">
+              <div className="relative w-3.5 h-3.5">
                 <svg width="14" height="14" viewBox="0 0 14 14">
                   <circle cx="7" cy="7" r="6.5" fill="white" opacity="0.9"/>
                   <circle cx="7" cy="7" r="4" fill="#ff6600"/>

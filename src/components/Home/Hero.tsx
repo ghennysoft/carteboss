@@ -10,7 +10,7 @@ export default function Hero() {
       <div className="absolute w-[700px] h-[700px] bg-gradient-radial from-blue/18 via-transparent to-transparent right-[-100px] top-[-100px] pointer-events-none"></div>
       <div className="absolute w-[400px] h-[400px] bg-gradient-radial from-gold/10 via-transparent to-transparent right-[30%] bottom-[10%] pointer-events-none"></div>
 
-      <div className="max-w-[1280px] mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-[60px] items-center">
+      <div className="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-[60px] items-center">
         <div>
           <div className="inline-flex items-center gap-2 bg-gold/12 border border-gold/30 text-gold-light text-xs font-medium tracking-[0.08em] uppercase py-1.5 px-3.5 rounded-full mb-7 animate-fade-in-up animation-delay-100">
             <span className="w-1.5 h-1.5 bg-gold-light rounded-full"></span>
@@ -33,7 +33,7 @@ export default function Hero() {
               </svg>
             </a>
             <a href="#" className="inline-flex items-center gap-2.5 bg-transparent text-white/75 font-dm-sans text-sm font-normal hover:text-white transition-colors">
-              <span className="w-10 h-10 border border-white/30 rounded-full flex items-center justify-center flex-shrink-0">
+              <span className="w-10 h-10 border border-white/30 rounded-full flex items-center justify-center shrink-0">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                   <polygon points="5,3 19,12 5,21"/>
                 </svg>
@@ -61,8 +61,8 @@ export default function Hero() {
           <div className="relative w-[380px] h-[280px]">
             <div className="absolute w-[320px] h-[200px] bg-gold/12 rounded-[18px] bottom-0 right-0 rotate-[8deg]"></div>
             <Image 
-              src="/images/Untitled_design__2_.png" 
-              alt="Carte BOSS Or" 
+              src="/card.jpg" 
+              alt="Carte BOSS" 
               width={340} 
               height={240}
               className="absolute rounded-2xl shadow-[0_40px_80px_rgba(0,0,0,0.5),0_0_0_1px_rgba(196,154,53,0.2)] -rotate-[4deg] top-5 left-5 object-cover animate-float"

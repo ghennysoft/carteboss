@@ -24,7 +24,7 @@ export default function Testimonials() {
 
   return (
     <section className="py-[100px] px-[5%] bg-white">
-      <div className="max-w-[1280px] mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-end mb-[60px]">
           <div>
             <span className="section-tag">Témoignages</span>
@@ -45,7 +45,7 @@ export default function Testimonials() {
               </div>
               <blockquote className="text-base leading-relaxed text-text-dark mb-7">&quot;{testimonial.text}&quot;</blockquote>
               <div className="flex items-center gap-3.5">
-                <div className="w-11 h-11 rounded-full bg-navy flex items-center justify-center font-semibold text-sm text-gold-light flex-shrink-0">
+                <div className="w-11 h-11 rounded-full bg-navy flex items-center justify-center font-semibold text-sm text-gold-light shrink-0">
                   {testimonial.initials}
                 </div>
                 <div>

@@ -3,7 +3,7 @@
 export default function ForYou() {
   return (
     <section className="py-[100px] px-[5%] bg-offWhite">
-      <div className="max-w-[1280px] mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center">
           <span className="section-tag">Solutions</span>
           <h2 className="font-playfair text-[clamp(32px,3.5vw,52px)] font-bold">
@@ -14,7 +14,7 @@ export default function ForYou() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-[60px]">
           {/* Client Card */}
-          <div className="rounded-2xl overflow-hidden relative min-h-[320px] flex flex-col justify-end p-10 bg-navy border border-gold/20">
+          <div className="rounded-2xl overflow-hidden relative min-h-80 flex flex-col justify-end p-10 bg-navy border border-gold/20">
             <div className="absolute top-[30px] right-[30px] w-20 h-20 border border-white/8 rounded-full">
               <div className="absolute inset-3 border border-white/6 rounded-full"></div>
             </div>
@@ -33,7 +33,7 @@ export default function ForYou() {
           </div>
           
           {/* Agent Card */}
-          <div className="rounded-2xl overflow-hidden relative min-h-[320px] flex flex-col justify-end p-10 bg-blue border border-white/10">
+          <div className="rounded-2xl overflow-hidden relative min-h-80 flex flex-col justify-end p-10 bg-blue border border-white/10">
             <div className="absolute top-[30px] right-[30px] w-20 h-20 border border-white/8 rounded-full">
               <div className="absolute inset-3 border border-white/6 rounded-full"></div>
             </div>

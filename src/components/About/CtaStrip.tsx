@@ -3,7 +3,7 @@
 export default function CtaStrip() {
   return (
     <div className="bg-gold py-20 px-[5%]">
-      <div className="max-w-[1280px] mx-auto flex justify-between items-center gap-10 flex-wrap">
+      <div className="max-w-7xl mx-auto flex justify-between items-center gap-10 flex-wrap">
         <div>
           <h2 className="font-playfair text-[clamp(28px,3vw,42px)] font-black text-navy leading-tight">
             Prêt à rejoindre le mouvement ?

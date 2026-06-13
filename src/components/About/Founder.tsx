@@ -3,7 +3,7 @@
 export default function Founder() {
   return (
     <section className="py-24 px-[5%] bg-offWhite">
-      <div className="max-w-[1280px] mx-auto">
+      <div className="max-w-7Xl mx-auto">
         <span className="section-tag">Le fondateur</span>
         <h2 className="font-playfair text-[clamp(32px,3.5vw,48px)] font-bold">
           La vision d&apos;un <span className="text-blue">homme.</span>

@@ -5,18 +5,18 @@ import Image from 'next/image'
 export default function OriginStory() {
   return (
     <section className="py-24 px-[5%] bg-white">
-      <div className="max-w-[1280px] mx-auto">
+      <div className="max-w-[7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div className="relative rounded-2xl overflow-hidden opacity-0 animate-fade-in-up">
             <Image 
-              src="/images/about-hero.jpg" 
+              src="/about.jpg" 
               alt="Lancement de BOSS — Kinshasa, janvier 2026" 
               width={600} 
               height={400}
               className="w-full rounded-2xl"
             />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-navy/90 to-transparent py-8 px-7 flex items-center gap-3">
-              <Image src="/images/BOSS_LOGO.png" alt="BOSS" width={28} height={28} className="brightness-0 invert" />
+            <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-navy/90 to-transparent py-8 px-7 flex items-center gap-3">
+              <Image src="/logo.png" alt="BOSS" width={28} height={28} className="brightness-0 invert bg-blue-850" />
               <span className="text-xs text-white/50 tracking-[0.05em]">Kinshasa, Janvier 2026 — Lancement officiel</span>
             </div>
           </div>

@@ -3,9 +3,9 @@
 export default function HowItWorks() {
   return (
     <section className="py-[100px] px-[5%] bg-navy text-white">
-      <div className="max-w-[1280px] mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-3">
-          <span className="section-tag !text-gold-light before:!text-white/30">Processus</span>
+          <span className="section-tag text-gold-light! before:text-white/30!">Processus</span>
         </div>
         <h2 className="font-playfair text-[clamp(32px,3.5vw,52px)] font-bold text-center text-white">
           Comment ça <span className="text-gold-light">marche ?</span>

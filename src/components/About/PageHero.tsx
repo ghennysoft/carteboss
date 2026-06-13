@@ -4,9 +4,9 @@ export default function PageHero() {
   return (
     <div className="min-h-[52vh] bg-navy flex items-end px-[5%] pt-[120px] pb-[72px] relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
-      <div className="absolute w-[600px] h-[600px] bg-gradient-radial from-blue/20 via-transparent to-transparent right-[-80px] top-[-80px] pointer-events-none"></div>
+      <div className="absolute w-[600px] h-[600px] bg-gradient-radial from-blue/20 via-transparent to-transparent -right-20 -top-20 pointer-events-none"></div>
       
-      <div className="max-w-[1280px] mx-auto w-full relative z-10">
+      <div className="max-w-7xl mx-auto w-full relative z-10">
         <p className="text-xs text-white/35 tracking-[0.08em] uppercase mb-5">
           BOSS &nbsp;/&nbsp; <span className="text-gold-light">À propos</span>
         </p>
