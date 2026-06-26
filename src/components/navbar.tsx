@@ -24,9 +24,9 @@ export default function Navbar() {
         <ul className="hidden lg:flex items-center gap-9 list-none">
           <li><Link href="/" className="text-white/75 text-sm font-normal tracking-wide hover:text-gold-light transition-colors">Accueil</Link></li>
           <li><Link href="/about" className="text-white/75 text-sm font-normal tracking-wide hover:text-gold-light transition-colors">À propos</Link></li>
-          <li><a href="#" className="text-white/75 text-sm font-normal tracking-wide hover:text-gold-light transition-colors">Services</a></li>
-          <li><a href="#" className="text-white/75 text-sm font-normal tracking-wide hover:text-gold-light transition-colors">Devenir un Agent</a></li>
-          <li><a href="#" className="text-white/75 text-sm font-normal tracking-wide hover:text-gold-light transition-colors">Nous contacter</a></li>
+          <li><a href="/services" className="text-white/75 text-sm font-normal tracking-wide hover:text-gold-light transition-colors">Services</a></li>
+          <li><a href="/devenir-agent" className="text-white/75 text-sm font-normal tracking-wide hover:text-gold-light transition-colors">Devenir un Agent</a></li>
+          <li><a href="/contact" className="text-white/75 text-sm font-normal tracking-wide hover:text-gold-light transition-colors">Nous contacter</a></li>
           <li>
             <a 
               href="#" 

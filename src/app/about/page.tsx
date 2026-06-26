@@ -1,5 +1,5 @@
-import Navbar from '@/components/navbar'
-import Footer from '@/components/footer'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import OriginStory from '@/components/OriginStory'
 import MissionVision from '@/components/MissionVision'

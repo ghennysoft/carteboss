@@ -39,8 +39,8 @@ export default function Footer() {
             <ul className="flex flex-col gap-2.5">
               <li><a href="#" className="text-sm text-white/55 hover:text-gold-light transition-colors">Blog</a></li>
               <li><a href="#" className="text-sm text-white/55 hover:text-gold-light transition-colors">Actualités</a></li>
-              <li><a href="#" className="text-sm text-white/55 hover:text-gold-light transition-colors">À propos</a></li>
-              <li><a href="#" className="text-sm text-white/55 hover:text-gold-light transition-colors">Contact</a></li>
+              <li><a href="/about" className="text-sm text-white/55 hover:text-gold-light transition-colors">À propos</a></li>
+              <li><a href="/contact" className="text-sm text-white/55 hover:text-gold-light transition-colors">Contact</a></li>
               <li><a href="#" className="text-sm text-white/55 hover:text-gold-light transition-colors">Centre d&apos;aide</a></li>
             </ul>
           </div>
