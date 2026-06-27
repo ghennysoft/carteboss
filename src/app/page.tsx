@@ -1,5 +1,5 @@
-import Navbar from '@/components/navbar'
-import Footer from '@/components/footer'
+import Navbar from '@/components/Navbar_'
+import Footer from '@/components/Footer_'
 import Hero from '@/components/Hero'
 import HowItWorks from '@/components/HowItWorks'
 import WhyBOSS from '@/components/WhyBOSS'

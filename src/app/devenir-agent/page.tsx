@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/Navbar_";
 import PageSwitcher from "@/components/PageSwitcher";
 import OpportunitePage from "@/components/OpportunitePage";
 import CarrierePage from "@/components/CarrierePage";
-import Footer from "@/components/footer";
+import Footer from "@/components/Footer_";
 
 export default function DevenirAgentPage() {
   const [activeTab, setActiveTab] = useState<"opportunite" | "carriere">("opportunite");
