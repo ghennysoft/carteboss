@@ -48,7 +48,11 @@ export default function WhyBOSS() {
         </div>
         
         <div className="text-center mt-12">
-          <a href="#" className="inline-flex items-center gap-2.5 bg-navy text-white font-dm-sans text-sm font-semibold py-3.5 px-7 rounded-md hover:bg-navy/90 transition-all">
+          <a 
+            href="https://forms.gle/xigqiKCbDjYGzgxA8" 
+            target="_blank"
+            className="inline-flex items-center gap-2.5 bg-navy text-white font-dm-sans text-sm font-semibold py-3.5 px-7 rounded-md hover:bg-navy/90 transition-all"
+          >
             Commencer maintenant →
           </a>
         </div>

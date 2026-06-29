@@ -14,7 +14,7 @@ export default function Hero() {
         <div>
           <div className="inline-flex items-center gap-2 bg-gold/12 border border-gold/30 text-gold-light text-xs font-medium tracking-[0.08em] uppercase py-1.5 px-3.5 rounded-full mb-7 animate-fade-in-up animation-delay-100">
             <span className="w-1.5 h-1.5 bg-gold-light rounded-full"></span>
-            Carte de visite intelligente NFC
+            Carte de visite professionnelle NFC
           </div>
           <h1 className="font-playfair text-[clamp(44px,5vw,72px)] font-black leading-[1.1] text-white mb-6 animate-fade-in-up animation-delay-200">
             Transformez chaque contact en <em className="not-italic text-gold-light">opportunité.</em>
@@ -26,7 +26,7 @@ export default function Hero() {
             Rapide &nbsp;·&nbsp; Sécurisée &nbsp;·&nbsp; Toujours à jour
           </p>
           <div className="flex items-center gap-5 flex-wrap animate-fade-in-up animation-delay-400">
-            <a href="#" className="inline-flex items-center gap-2.5 bg-gold text-navy font-dm-sans text-sm font-semibold py-3.5 px-7 rounded-md hover:bg-gold-light hover:-translate-y-px transition-all">
+            <a target="_blank" href="https://forms.gle/xigqiKCbDjYGzgxA8" className="inline-flex items-center gap-2.5 bg-gold text-navy font-dm-sans text-sm font-semibold py-3.5 px-7 rounded-md hover:bg-gold-light hover:-translate-y-px transition-all">
               Obtenir ma carte
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -61,7 +61,7 @@ export default function Hero() {
           <div className="relative w-[380px] h-[280px]">
             <div className="absolute w-[320px] h-[200px] bg-gold/12 rounded-[18px] bottom-0 right-0 rotate-[8deg]"></div>
             <Image 
-              src="/card.jpg" 
+              src="/metal.PNG" 
               alt="Carte BOSS" 
               width={340} 
               height={240}

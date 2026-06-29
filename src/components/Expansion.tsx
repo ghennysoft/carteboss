@@ -11,8 +11,8 @@ export default function Expansion() {
 
   const timeline = [
     { year: "2026 — Kinshasa", desc: "Lancement et consolidation. Bâtir la communauté BOSS dans la capitale." },
-    { year: "2027 — Lubumbashi &amp; Matadi", desc: "Extension vers les autres grands centres économiques du Congo." },
-    { year: "2028–2031 — Le Congo entier &amp; l'Afrique", desc: "Déploiement national puis continental. BOSS pour chaque professionnel africain." }
+    { year: "2027 — Lubumbashi & Matadi", desc: "Extension vers les autres grands centres économiques du Congo." },
+    { year: "2028–2031 — Le Congo entier & l'Afrique", desc: "Déploiement national puis continental. BOSS pour chaque professionnel africain." }
   ]
 
   return (

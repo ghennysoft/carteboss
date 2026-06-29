@@ -77,40 +77,40 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <a 
-              href="#" 
+            <Link 
+              href="/services" 
               onClick={() => setIsMenuOpen(false)}
               className="text-white/80 text-lg font-medium tracking-wide hover:text-gold-light transition-colors"
             >
               Services
-            </a>
+            </Link>
           </li>
           <li>
-            <a 
-              href="#" 
+            <Link 
+              href="/devenir-agent" 
               onClick={() => setIsMenuOpen(false)}
               className="text-white/80 text-lg font-medium tracking-wide hover:text-gold-light transition-colors"
             >
               Devenir un Agent
-            </a>
+            </Link>
           </li>
           <li>
-            <a 
-              href="#" 
+            <Link 
+              href="/contact" 
               onClick={() => setIsMenuOpen(false)}
               className="text-white/80 text-lg font-medium tracking-wide hover:text-gold-light transition-colors"
             >
               Nous contacter
-            </a>
+            </Link>
           </li>
           <li className="pt-4">
-            <a 
+            <Link 
               href="#" 
               onClick={() => setIsMenuOpen(false)}
               className="inline-block bg-transparent border border-gold text-gold py-2.5 px-8 rounded-md font-medium hover:bg-gold hover:text-navy transition-all"
             >
               Connexion agent
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

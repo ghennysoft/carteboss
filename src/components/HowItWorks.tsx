@@ -57,7 +57,7 @@ export default function HowItWorks() {
         </div>
         
         <div className="text-center mt-12">
-          <a href="#" className="inline-flex items-center gap-2.5 bg-gold text-navy font-dm-sans text-sm font-semibold py-3.5 px-7 rounded-md hover:bg-gold-light hover:-translate-y-px transition-all">
+          <a href="/services" className="inline-flex items-center gap-2.5 bg-gold text-navy font-dm-sans text-sm font-semibold py-3.5 px-7 rounded-md hover:bg-gold-light hover:-translate-y-px transition-all">
             Découvrir BOSS →
           </a>
         </div>

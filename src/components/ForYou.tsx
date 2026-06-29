@@ -27,7 +27,7 @@ export default function ForYou() {
             </span>
             <h3 className="font-playfair text-[28px] font-bold text-white mb-3">Vous êtes un client ?</h3>
             <p className="text-[15px] leading-relaxed text-white/60 mb-7">Modernisez votre image, partagez vos informations en un tap et développez votre réseau en toute simplicité.</p>
-            <a href="#" className="inline-flex items-center gap-2 border border-gold text-gold-light bg-transparent font-dm-sans text-sm font-medium py-2.5 px-5 rounded-md hover:bg-gold/15 transition-colors self-start">
+            <a href="/services" className="inline-flex items-center gap-2 border border-gold text-gold-light bg-transparent font-dm-sans text-sm font-medium py-2.5 px-5 rounded-md hover:bg-gold/15 transition-colors self-start">
               Découvrir plus →
             </a>
           </div>
@@ -46,7 +46,7 @@ export default function ForYou() {
             </span>
             <h3 className="font-playfair text-[28px] font-bold text-white mb-3">Vous êtes un agent ?</h3>
             <p className="text-[15px] leading-relaxed text-white/60 mb-7">Rejoignez notre réseau d&apos;agents et bénéficiez d&apos;opportunités exclusives pour développer vos revenus et votre activité.</p>
-            <a href="#" className="inline-flex items-center gap-2 border border-white/40 text-white bg-transparent font-dm-sans text-sm font-medium py-2.5 px-5 rounded-md hover:bg-white/10 hover:border-white/70 transition-colors self-start">
+            <a href="/devenir-agent" className="inline-flex items-center gap-2 border border-white/40 text-white bg-transparent font-dm-sans text-sm font-medium py-2.5 px-5 rounded-md hover:bg-white/10 hover:border-white/70 transition-colors self-start">
               Devenir agent →
             </a>
           </div>
