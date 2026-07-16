@@ -32,7 +32,7 @@ export default function Hero() {
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </a>
-            <a href="#" className="inline-flex items-center gap-2.5 bg-transparent text-white/75 font-dm-sans text-sm font-normal hover:text-white transition-colors">
+            <a href="/video.mp4" className="inline-flex items-center gap-2.5 bg-transparent text-white/75 font-dm-sans text-sm font-normal hover:text-white transition-colors">
               <span className="w-10 h-10 border border-white/30 rounded-full flex items-center justify-center shrink-0">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                   <polygon points="5,3 19,12 5,21"/>
@@ -60,11 +60,12 @@ export default function Hero() {
         <div className="flex justify-center items-center animate-fade-in-up animation-delay-900">
           <div className="relative w-[380px] h-[280px]">
             <div className="absolute w-[320px] h-[200px] bg-gold/12 rounded-[18px] bottom-0 right-0 rotate-[8deg]"></div>
-            <Image 
-              src="/metal.PNG" 
+            <img 
+              src="/metal.png" 
               alt="Carte BOSS" 
-              width={340} 
-              height={240}
+              width={540} 
+              height={440}
+              style={{objectFit: 'cover'}}
               className="absolute rounded-2xl shadow-[0_40px_80px_rgba(0,0,0,0.5),0_0_0_1px_rgba(196,154,53,0.2)] -rotate-[4deg] top-5 left-5 object-cover animate-float"
             />
             <div className="absolute -bottom-2.5 right-2.5 bg-navy-light border border-gold/30 text-gold-light text-xs font-medium py-2 px-4 rounded-full flex items-center gap-1.5 whitespace-nowrap">

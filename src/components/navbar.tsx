@@ -29,7 +29,7 @@ export default function Navbar() {
           <li><Link href="/contact" className="text-white/75 text-sm font-normal tracking-wide hover:text-gold-light transition-colors">Nous contacter</Link></li>
           <li>
             <a 
-              href="#" 
+              href="https://dashboard.lacarteboss.com" 
               className="bg-transparent border border-gold text-gold py-2 px-5 rounded-md font-medium hover:bg-gold hover:text-navy transition-all"
             >
               Connexion agent
@@ -78,7 +78,7 @@ export default function Navbar() {
           </li>
           <li>
             <a 
-              href="#" 
+              href="/services" 
               onClick={() => setIsMenuOpen(false)}
               className="text-white/80 text-lg font-medium tracking-wide hover:text-gold-light transition-colors"
             >
@@ -87,7 +87,7 @@ export default function Navbar() {
           </li>
           <li>
             <a 
-              href="#" 
+              href="/devenir-agent" 
               onClick={() => setIsMenuOpen(false)}
               className="text-white/80 text-lg font-medium tracking-wide hover:text-gold-light transition-colors"
             >
@@ -96,7 +96,7 @@ export default function Navbar() {
           </li>
           <li>
             <a 
-              href="#" 
+              href="/contact" 
               onClick={() => setIsMenuOpen(false)}
               className="text-white/80 text-lg font-medium tracking-wide hover:text-gold-light transition-colors"
             >
@@ -105,7 +105,7 @@ export default function Navbar() {
           </li>
           <li className="pt-4">
             <a 
-              href="#" 
+              href="https://dashboard.lacarteboss.com" 
               onClick={() => setIsMenuOpen(false)}
               className="inline-block bg-transparent border border-gold text-gold py-2.5 px-8 rounded-md font-medium hover:bg-gold hover:text-navy transition-all"
             >

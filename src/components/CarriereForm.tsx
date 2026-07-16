@@ -16,6 +16,13 @@ export default function CarriereForm() {
   const [fileName, setFileName] = useState<string>("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const formRef = useRef<HTMLDivElement>(null);
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  const handleClick = () => {
+    if (fileRef.current){
+      fileRef.current.click();
+    }
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -215,14 +222,15 @@ export default function CarriereForm() {
             <label className="block text-[13px] font-semibold text-[#0a1628] tracking-[0.03em] mb-2">
               CV (PDF ou Word) <span className="text-[#C49A35] ml-0.5">*</span>
             </label>
-            <div className={`border-2 border-dashed rounded-[12px] p-8 text-center cursor-pointer transition-all duration-200 ${fileName ? 'border-[#185FA5] bg-[#daeaf8]' : 'border-[rgba(24,95,165,0.3)] bg-[#E6F1FB] hover:border-[#185FA5] hover:bg-[#daeaf8]'}`}>
+            <div onClick={handleClick} className={`border-2 border-dashed rounded-[12px] p-8 text-center cursor-pointer transition-all duration-200 ${fileName ? 'border-[#185FA5] bg-[#daeaf8]' : 'border-[rgba(24,95,165,0.3)] bg-[#E6F1FB] hover:border-[#185FA5] hover:bg-[#daeaf8]'}`}>
               <input
                 type="file"
                 id="cvFile"
+                ref={fileRef}
                 accept=".pdf,.doc,.docx"
                 onChange={handleFileChange}
                 className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
-                style={{ position: "absolute", inset: 0, opacity: 0, cursor: "pointer", width: "100%", height: "100%" }}
+                style={{ position: "absolute", top: "0px", left: "0px", right: "0px", bottom: "0px", inset: 0, opacity: 0, cursor: "pointer", width: "100%", height: "100%" }}
               />
               <div className="w-11 h-11 bg-[rgba(24,95,165,0.1)] rounded-full flex items-center justify-center mx-auto mb-3">
                 <svg viewBox="0 0 24 24" className="w-[22px] h-[22px] stroke-[#185FA5] fill-none stroke-[1.8]">

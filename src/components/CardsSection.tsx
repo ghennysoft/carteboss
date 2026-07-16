@@ -24,10 +24,10 @@ export default function CardsSection() {
 
             <div className="relative h-[260px] pt-5 flex items-center justify-center overflow-visible bg-transparent">
               <Image
-                src="/pvc.PNG"
+                src="/pvc.png"
                 alt="Carte BOSS PVC Standard"
-                width={340}
-                height={200}
+                width={540}
+                height={400}
                 className="w-[88%] max-w-[340px] h-auto rounded-[16px] object-cover filter drop-shadow-[0_24px_48px_rgba(0,0,0,0.22)] drop-shadow-[0_8px_16px_rgba(0,0,0,0.14)] animate-float-card relative z-[2]"
               />
               <div className="absolute bottom-[-4px] right-4 z-[3] flex items-center gap-1.5 text-[11px] font-medium px-3 py-1.5 rounded-[100px] bg-[#0a1628] text-[#E8BC5A] border border-[rgba(196,154,53,0.25)]">
@@ -80,7 +80,7 @@ export default function CardsSection() {
                 </li>
               </ul>
 
-              <Link href="#" className="block text-center px-6 py-3.5 rounded-[10px] font-['DM_Sans',sans-serif] text-[15px] font-semibold no-underline border-none cursor-pointer transition-all duration-200 hover:-translate-y-[1px] bg-[#0a1628] text-white hover:bg-[#1a2f58]">
+              <Link href="https://forms.gle/xigqiKCbDjYGzgxA8" className="block text-center px-6 py-3.5 rounded-[10px] font-['DM_Sans',sans-serif] text-[15px] font-semibold no-underline border-none cursor-pointer transition-all duration-200 hover:-translate-y-[1px] bg-[#0a1628] text-white hover:bg-[#1a2f58]">
                 Commander la carte Standard →
               </Link>
             </div>
@@ -93,10 +93,10 @@ export default function CardsSection() {
 
             <div className="relative h-[260px] pt-5 flex items-center justify-center overflow-visible bg-transparent">
               <Image
-                src="/metal.PNG"
+                src="/metal.png"
                 alt="Carte BOSS Métal Premium"
-                width={340}
-                height={200}
+                width={540}
+                height={400}
                 className="w-[88%] max-w-[340px] h-auto rounded-[16px] object-cover filter drop-shadow-[0_24px_48px_rgba(196,154,53,0.25)] drop-shadow-[0_8px_20px_rgba(0,0,0,0.3)] animate-float-card relative z-[2]"
                 style={{ animationDelay: "0.8s" }}
               />
@@ -146,7 +146,7 @@ export default function CardsSection() {
                 </li>
               </ul>
 
-              <Link href="#" className="block text-center px-6 py-3.5 rounded-[10px] font-['DM_Sans',sans-serif] text-[15px] font-semibold no-underline border-none cursor-pointer transition-all duration-200 hover:-translate-y-[1px] bg-[#C49A35] text-[#0a1628] shadow-[0_4px_20px_rgba(196,154,53,0.3)] hover:bg-[#E8BC5A] hover:shadow-[0_6px_28px_rgba(196,154,53,0.4)]">
+              <Link href="https://forms.gle/xigqiKCbDjYGzgxA8" className="block text-center px-6 py-3.5 rounded-[10px] font-['DM_Sans',sans-serif] text-[15px] font-semibold no-underline border-none cursor-pointer transition-all duration-200 hover:-translate-y-[1px] bg-[#C49A35] text-[#0a1628] shadow-[0_4px_20px_rgba(196,154,53,0.3)] hover:bg-[#E8BC5A] hover:shadow-[0_6px_28px_rgba(196,154,53,0.4)]">
                 Commander la carte Métal →
               </Link>
             </div>

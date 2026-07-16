@@ -10,7 +10,7 @@ export default function CtaStrip() {
           </h2>
           <p className="text-base text-navy/65 mt-2">Plus de 100 professionnels à Kinshasa ont déjà fait le choix de BOSS.</p>
         </div>
-        <a href="#" className="inline-flex items-center gap-2.5 bg-navy text-white font-dm-sans text-sm font-semibold py-3.5 px-7 rounded-md hover:bg-navy-light transition-all whitespace-nowrap">
+        <a href="https://forms.gle/xigqiKCbDjYGzgxA8" className="inline-flex items-center gap-2.5 bg-navy text-white font-dm-sans text-sm font-semibold py-3.5 px-7 rounded-md hover:bg-navy-light transition-all whitespace-nowrap">
           Obtenir ma carte →
         </a>
       </div>

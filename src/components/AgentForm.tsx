@@ -30,9 +30,9 @@ export default function AgentForm() {
 
   const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormState({ ...formState, referred: e.target.value });
-    if (e.target.value === "non") {
-      setFormState({ ...formState, referralName: "" });
-    }
+    // if (e.target.value === "non") {
+    //   setFormState({ ...formState, referralName: "" });
+    // }
   };
 
   const handleSubmit = () => {
@@ -145,7 +145,7 @@ export default function AgentForm() {
               <input
                 id="phone"
                 type="tel"
-                placeholder="+243 8XX XXX XXX"
+                placeholder="+243 XXX XXX XXX"
                 value={formState.phone}
                 onChange={handleChange}
                 className={`w-full font-['DM_Sans',sans-serif] text-[15px] text-[#0a1628] bg-[#F7F9FC] border-[1.5px] border-[rgba(24,95,165,0.15)] rounded-[10px] p-[13px_16px] outline-none transition-all focus:border-[#185FA5] focus:bg-white focus:shadow-[0_0_0_3px_rgba(24,95,165,0.08)] ${errors.phone ? '!border-[#e53e3e]' : ''}`}

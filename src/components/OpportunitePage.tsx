@@ -1,4 +1,4 @@
-import Hero from "./Hero";
+import OpportunityHero from "./OpportunityHero";
 import StatsBar from "./StatsBar";
 import Benefits from "./Benefits";
 import HowItWorkss from "./HowItWorkss";
@@ -9,7 +9,7 @@ import FAQ from "./FAQ";
 export default function OpportunitePage() {
   return (
     <>
-      <Hero />
+      <OpportunityHero />
       <StatsBar />
       <Benefits />
       <HowItWorkss />
