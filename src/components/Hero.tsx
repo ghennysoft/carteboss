@@ -61,7 +61,7 @@ export default function Hero() {
           <div className="relative w-[380px] h-[280px]">
             <div className="absolute w-[320px] h-[200px] bg-gold/12 rounded-[18px] bottom-0 right-0 rotate-[8deg]"></div>
             <img 
-              src="/metal.png" 
+              src="/metal_card.png" 
               alt="Carte BOSS" 
               width={540} 
               height={440}

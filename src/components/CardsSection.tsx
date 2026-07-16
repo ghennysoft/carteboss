@@ -24,7 +24,7 @@ export default function CardsSection() {
 
             <div className="relative h-[260px] pt-5 flex items-center justify-center overflow-visible bg-transparent">
               <Image
-                src="/pvc.png"
+                src="/pvc_card.png"
                 alt="Carte BOSS PVC Standard"
                 width={540}
                 height={400}
@@ -93,7 +93,7 @@ export default function CardsSection() {
 
             <div className="relative h-[260px] pt-5 flex items-center justify-center overflow-visible bg-transparent">
               <Image
-                src="/metal.png"
+                src="/metal_card.png"
                 alt="Carte BOSS Métal Premium"
                 width={540}
                 height={400}
