@@ -13,7 +13,7 @@ export default function CarriereForm() {
     motivation: "",
   });
 
-  const [fileName, setFileName] = useState<string>("");
+  const [file, setFile] = useState<File | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const formRef = useRef<HTMLDivElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
@@ -32,11 +32,11 @@ export default function CarriereForm() {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setFileName(e.target.files[0].name);
+      setFile(e.target.files[0]);
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const { fullname, phone, email, position, heard, motivation } = formState;
 
     if (!fullname || !phone || !email || !position || !heard || !motivation) {
@@ -44,25 +44,72 @@ export default function CarriereForm() {
       return;
     }
 
-    const subject = encodeURIComponent("Candidature Carrière BOSS SARL — " + fullname + " — " + position);
-    const body = encodeURIComponent(
-      "CANDIDATURE AGENT COMMERCIAL BOSS SARL\n" +
-      "========================================\n\n" +
-      "Nom complet  : " + fullname + "\n" +
-      "Téléphone    : " + phone + "\n" +
-      "Email        : " + email + "\n" +
-      "Poste        : " + position + "\n" +
-      "Expérience   : " + (formState.experience || "Non précisé") + "\n" +
-      "Source       : " + heard + "\n\n" +
-      "LETTRE DE MOTIVATION\n---------------------\n" + motivation + "\n\n" +
-      (fileName ? "[CV joint: " + fileName + "]" : "[Aucun CV joint]")
-    );
+    // Vérification du fichier
+    if (file) {
+      const maxSize = 5 * 1024 * 1024; // 5 MB
 
-    window.location.href = "mailto:bosssarlhr@gmail.com?subject=" + subject + "&body=" + body;
+      if (file.size > maxSize) {
+        alert("Le fichier ne doit pas dépasser 5 MB.");
+        return;
+      }
 
-    setIsSubmitted(true);
-    if (formRef.current) {
-      formRef.current.scrollIntoView({ behavior: "smooth" });
+      const allowedTypes = [
+        "application/pdf",
+        "application/msword",
+        "application/doc",
+        "application/docx",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      ];
+
+      if (!allowedTypes.includes(file.type)) {
+        alert("Veuillez sélectionner un fichier PDF ou Word.");
+        return;
+      }
+    }
+
+    try {
+      const formData = new FormData();
+
+      // Ajouter les champs du formulaire
+      Object.entries(formState).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+
+      // Ajouter le fichier
+      if (file) {
+        formData.append("attachment", file);
+      }
+
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/agents/candidatures_carriere/`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        console.error(data);
+        alert(
+          data.message ||
+          "Une erreur est survenue lors de l'envoi."
+        );
+        return;
+      }
+
+      setIsSubmitted(true);
+      if (formRef.current) {
+        formRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+
+    } catch (error) {
+      console.error("Erreur réseau :", error);
+
+      alert(
+        "Impossible de contacter le serveur. Veuillez réessayer."
+      );
     }
   };
 
@@ -222,7 +269,7 @@ export default function CarriereForm() {
             <label className="block text-[13px] font-semibold text-[#0a1628] tracking-[0.03em] mb-2">
               CV (PDF ou Word) <span className="text-[#C49A35] ml-0.5">*</span>
             </label>
-            <div onClick={handleClick} className={`border-2 border-dashed rounded-[12px] p-8 text-center cursor-pointer transition-all duration-200 ${fileName ? 'border-[#185FA5] bg-[#daeaf8]' : 'border-[rgba(24,95,165,0.3)] bg-[#E6F1FB] hover:border-[#185FA5] hover:bg-[#daeaf8]'}`}>
+            <div onClick={handleClick} className={`border-2 border-dashed rounded-[12px] p-8 text-center cursor-pointer transition-all duration-200 ${file ? 'border-[#185FA5] bg-[#daeaf8]' : 'border-[rgba(24,95,165,0.3)] bg-[#E6F1FB] hover:border-[#185FA5] hover:bg-[#daeaf8]'}`}>
               <input
                 type="file"
                 id="cvFile"
@@ -241,7 +288,7 @@ export default function CarriereForm() {
               </div>
               <div className="text-[15px] font-semibold text-[#0a1628] mb-1">Cliquez pour télécharger votre CV</div>
               <div className="text-[13px] text-[#5a6e8a]">PDF, DOC ou DOCX · Max 5 MB</div>
-              {fileName && <div className="mt-2.5 text-[13px] font-semibold text-[#185FA5]">✓ {fileName}</div>}
+              {file && <div className="mt-2.5 text-[13px] font-semibold text-[#185FA5]">✓ {file.name}</div>}
             </div>
           </div>
 

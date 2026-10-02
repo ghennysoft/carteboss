@@ -20,23 +20,56 @@ export default function AgentForm() {
   const formRef = useRef<HTMLDivElement>(null);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement |
+      HTMLTextAreaElement |
+      HTMLSelectElement
+    >
   ) => {
-    setFormState({ ...formState, [e.target.id]: e.target.value });
-    if (errors[e.target.id]) {
-      setErrors({ ...errors, [e.target.id]: false });
+    const { id, value } = e.target;
+
+    setFormState((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+
+    if (errors[id]) {
+      setErrors((prev) => ({
+        ...prev,
+        [id]: false,
+      }));
     }
   };
 
-  const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormState({ ...formState, referred: e.target.value });
-    // if (e.target.value === "non") {
-    //   setFormState({ ...formState, referralName: "" });
-    // }
+  const handleRadioChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const value = e.target.value;
+
+    setFormState((prev) => ({
+      ...prev,
+      referred: value,
+      referralName: value === "non" ? "" : prev.referralName,
+    }));
+
+    if (errors.referred) {
+      setErrors((prev) => ({
+        ...prev,
+        referred: false,
+      }));
+    }
   };
 
-  const handleSubmit = () => {
-    const requiredFields = ["fullname", "phone", "email", "city", "heard", "motivation"];
+  const handleSubmit = async () => {
+    const requiredFields = [
+      "fullname",
+      "phone",
+      "email",
+      "city",
+      "heard",
+      "motivation",
+    ];
+
     const newErrors: Record<string, boolean> = {};
     let valid = true;
 
@@ -52,7 +85,10 @@ export default function AgentForm() {
       return;
     }
 
-    if (formState.referred === "oui" && !formState.referralName.trim()) {
+    if (
+      formState.referred === "oui" &&
+      !formState.referralName.trim()
+    ) {
       newErrors.referralName = true;
       valid = false;
     }
@@ -62,26 +98,43 @@ export default function AgentForm() {
       return;
     }
 
-    const name = formState.fullname.split(" ")[0];
-    const subject = encodeURIComponent("Candidature Agent BOSS — " + formState.fullname);
-    const body = encodeURIComponent(
-      "NOUVELLE CANDIDATURE AGENT BOSS\n" +
-      "================================\n\n" +
-      "Nom complet : " + formState.fullname + "\n" +
-      "Téléphone   : " + formState.phone + "\n" +
-      "Email       : " + formState.email + "\n" +
-      "Commune     : " + formState.city + "\n" +
-      "Profession  : " + (formState.occupation || "Non précisée") + "\n" +
-      "Source      : " + formState.heard + "\n" +
-      "Référence   : " + (formState.referred === "oui" ? "Oui — " + formState.referralName : "Non") + "\n\n" +
-      "MOTIVATION\n----------\n" + formState.motivation
-    );
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/agents/candidature_opportunite/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formState),
+        }
+      );
 
-    window.location.href = "mailto:bosssarlhr@gmail.com?subject=" + subject + "&body=" + body;
+      const data = await response.json();
 
-    setIsSubmitted(true);
-    if (formRef.current) {
-      formRef.current.scrollIntoView({ behavior: "smooth" });
+      if (!response.ok) {
+        console.error(data);
+        alert(
+          data.message ||
+          "Une erreur est survenue lors de l'envoi."
+        );
+        return;
+      }
+
+      setIsSubmitted(true);
+
+      if (formRef.current) {
+        formRef.current.scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+
+    } catch (error) {
+      console.error("Erreur réseau :", error);
+
+      alert(
+        "Impossible de contacter le serveur. Veuillez réessayer."
+      );
     }
   };
 

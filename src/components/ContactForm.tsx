@@ -10,6 +10,7 @@ export default function ContactForm() {
     subject: "",
     message: "",
   });
+  console.log(formState);
 
   const [errors, setErrors] = useState<Record<string, boolean>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -19,12 +20,9 @@ export default function ContactForm() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setFormState({ ...formState, [e.target.id]: e.target.value });
-    if (errors[e.target.id]) {
-      setErrors({ ...errors, [e.target.id]: false });
-    }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const newErrors: Record<string, boolean> = {};
     if (!formState.name.trim()) newErrors.name = true;
     if (!formState.email.trim()) newErrors.email = true;
@@ -33,28 +31,46 @@ export default function ContactForm() {
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
-      if (newErrors.name) document.getElementById("c_name")?.focus();
+      if (newErrors.name) document.getElementById("name")?.focus();
       return;
     }
 
-    const subject = encodeURIComponent(
-      "Contact BOSS SARL — " + formState.subject + " (" + formState.name + ")"
-    );
-    const body = encodeURIComponent(
-      "MESSAGE VIA SITE BOSS SARL\n" +
-      "============================\n\n" +
-      "Nom     : " + formState.name + "\n" +
-      "Email   : " + formState.email + "\n" +
-      "Tel     : " + (formState.phone || "Non renseigné") + "\n" +
-      "Objet   : " + formState.subject + "\n\n" +
-      "MESSAGE\n-------\n" + formState.message
-    );
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/agents/contact/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formState),
+        }
+      );
 
-    window.location.href = "mailto:lacartebossbsc@gmail.com?subject=" + subject + "&body=" + body;
+      const data = await response.json();
 
-    setIsSubmitted(true);
-    if (formRef.current) {
-      formRef.current.scrollIntoView({ behavior: "smooth" });
+      if (!response.ok) {
+        console.error(data);
+        alert(
+          data.message ||
+          "Une erreur est survenue lors de l'envoi."
+        );
+        return;
+      }
+
+      setIsSubmitted(true);
+
+      if (formRef.current) {
+        formRef.current.scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+
+    } catch (error) {
+      console.error("Erreur réseau :", error);
+      alert(
+        "Impossible de contacter le serveur. Veuillez réessayer."
+      );
     }
   };
 
@@ -89,11 +105,11 @@ export default function ContactForm() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
         <div>
-          <label htmlFor="c_name" className="block text-[13px] font-semibold text-[#0a1628] tracking-[0.03em] mb-[7px]">
+          <label htmlFor="name" className="block text-[13px] font-semibold text-[#0a1628] tracking-[0.03em] mb-[7px]">
             Nom complet <span className="text-[#C49A35] ml-0.5">*</span>
           </label>
           <input
-            id="c_name"
+            id="name"
             type="text"
             placeholder="Jean-Pierre Mukasa"
             value={formState.name}
@@ -102,11 +118,11 @@ export default function ContactForm() {
           />
         </div>
         <div>
-          <label htmlFor="c_phone" className="block text-[13px] font-semibold text-[#0a1628] tracking-[0.03em] mb-[7px]">
+          <label htmlFor="phone" className="block text-[13px] font-semibold text-[#0a1628] tracking-[0.03em] mb-[7px]">
             Téléphone
           </label>
           <input
-            id="c_phone"
+            id="phone"
             type="tel"
             placeholder="+243 8XX XXX XXX"
             value={formState.phone}
@@ -117,11 +133,11 @@ export default function ContactForm() {
       </div>
 
       <div className="mb-5">
-        <label htmlFor="c_email" className="block text-[13px] font-semibold text-[#0a1628] tracking-[0.03em] mb-[7px]">
+        <label htmlFor="email" className="block text-[13px] font-semibold text-[#0a1628] tracking-[0.03em] mb-[7px]">
           Adresse email <span className="text-[#C49A35] ml-0.5">*</span>
         </label>
         <input
-          id="c_email"
+          id="email"
           type="email"
           placeholder="votrenom@email.com"
           value={formState.email}
@@ -131,11 +147,11 @@ export default function ContactForm() {
       </div>
 
       <div className="mb-5">
-        <label htmlFor="c_subject" className="block text-[13px] font-semibold text-[#0a1628] tracking-[0.03em] mb-[7px]">
+        <label htmlFor="subject" className="block text-[13px] font-semibold text-[#0a1628] tracking-[0.03em] mb-[7px]">
           Objet <span className="text-[#C49A35] ml-0.5">*</span>
         </label>
         <select
-          id="c_subject"
+          id="subject"
           value={formState.subject}
           onChange={handleChange}
           className={`w-full font-['DM_Sans',sans-serif] text-[15px] text-[#0a1628] bg-[#F7F9FC] border-[1.5px] border-[rgba(24,95,165,0.15)] rounded-[10px] p-[13px_16px] outline-none transition-all focus:border-[#185FA5] focus:bg-white focus:shadow-[0_0_0_3px_rgba(24,95,165,0.08)] appearance-none bg-[url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a6e8a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E\")] bg-no-repeat bg-[right_16px_center] pr-10 cursor-pointer ${errors.subject ? '!border-[#e53e3e]' : ''}`}
@@ -153,11 +169,11 @@ export default function ContactForm() {
       </div>
 
       <div className="mb-5">
-        <label htmlFor="c_message" className="block text-[13px] font-semibold text-[#0a1628] tracking-[0.03em] mb-[7px]">
+        <label htmlFor="message" className="block text-[13px] font-semibold text-[#0a1628] tracking-[0.03em] mb-[7px]">
           Message <span className="text-[#C49A35] ml-0.5">*</span>
         </label>
         <textarea
-          id="c_message"
+          id="message"
           placeholder="Décrivez votre demande en détail..."
           value={formState.message}
           onChange={handleChange}

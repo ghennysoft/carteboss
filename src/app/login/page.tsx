@@ -98,7 +98,7 @@ const Login = () => {
               <div>
                 <div className="flex items-center justify-between">
                   <div className="text-sm">
-                    {/* <Link to={"/auth/find_user"} className="font-semibold text-indigo-600 hover:text-indigo-500">
+                    {/* <Link href={"/auth/find_user"} className="font-semibold text-indigo-600 hover:text-indigo-500">
                       Oublié ?
                     </Link> */}
                   </div>
