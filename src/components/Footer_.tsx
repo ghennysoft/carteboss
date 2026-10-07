@@ -1,8 +1,43 @@
 'use client'
 
 import Image from 'next/image'
+import { useState } from 'react';
 
 export default function Footer() {
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [isSubmited, setIsSubmited] = useState("");
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setLoading(true);
+    try{
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/agents/newsletter/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setIsSubmited("Inscription réussie !");
+      } else {
+        console.error(data.error);
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+};
   return (
     <footer className="bg-navy border-t border-white/6 pt-[72px] pb-10 px-[5%]">
       <div className="max-w-7xl mx-auto">
@@ -58,8 +93,31 @@ export default function Footer() {
             <h4 className="text-base font-semibold text-white mb-2">Restez à l&apos;affût des offres</h4>
             <p className="text-[13px] leading-relaxed text-white/40 mb-4">Nous ajoutons constamment de nouvelles fonctionnalités pour améliorer votre expérience.</p>
             <div className="flex gap-2">
-              <input type="email" placeholder="Votre email" className="flex-1 bg-white/6 border border-white/10 rounded-md py-2.5 px-3.5 font-dm-sans text-sm text-white outline-none focus:border-gold transition-colors placeholder:text-white/30" />
-              <button className="bg-gold text-navy border-none rounded-md py-2.5 px-[18px] font-dm-sans text-sm font-semibold hover:bg-gold-light transition-colors whitespace-nowrap">S&apos;abonner</button>
+              {
+                !isSubmited
+                ? <>
+                  <input 
+                    type="email" 
+                    placeholder="Votre email" 
+                    onChange={(e)=>setEmail(e.target.value)}
+                    className="flex-1 bg-white/6 border border-white/10 rounded-md py-2.5 px-3.5 font-dm-sans text-sm text-white outline-none focus:border-gold transition-colors placeholder:text-white/30" 
+                  />
+                    <button 
+                      onClick={handleSubmit} 
+                      disabled={loading}
+                      className="bg-gold text-navy border-none rounded-md py-2.5 px-[18px] font-dm-sans text-sm font-semibold hover:bg-gold-light transition-colors whitespace-nowrap"
+                    >
+                      {
+                        !loading
+                        ? "S'abonner"
+                        : "Chargement..."
+                      }
+                    </button>
+                </>
+                : <div className='bg-green-700 p-2 text-white rounded-md text-sm font-semibold'>
+                  {isSubmited}
+                </div>
+              }
             </div>
           </div>
         </div>

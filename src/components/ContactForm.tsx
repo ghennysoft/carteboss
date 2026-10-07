@@ -10,7 +10,6 @@ export default function ContactForm() {
     subject: "",
     message: "",
   });
-  console.log(formState);
 
   const [errors, setErrors] = useState<Record<string, boolean>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
